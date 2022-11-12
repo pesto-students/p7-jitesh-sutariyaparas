@@ -1,24 +1,62 @@
 body {
   font-family: "Lato", sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
-.left_nav {
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: lightgray;
+  padding: 10px;
 }
+
 .nav_icon {
   color: black;
 }
 
-.control_icon {
-  color: black;
+h2 {
+  margin: 0px;
+}
+
+.main_container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .player_header {
   background-color: gray;
   color: white;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.album_detail {
+  padding-left: 20px;
+  position: relative;
 }
 
-footer{
-    background-color: lightblue;
-    color: white;
+.player_control {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0px;
+}
+
+.control_icon {
+  color: black;
+  margin-right: 15px;
+}
+
+.track_list {
+  background-color: white;
+  color: black;
+}
+
+footer {
+  background-color: lightblue;
+  color: white;
 }
