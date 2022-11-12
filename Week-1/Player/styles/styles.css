@@ -23,7 +23,6 @@ h2 {
 .main_container {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
 }
 
 .player_header {
@@ -32,6 +31,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   padding: 20px;
+  width: 100%;
 }
 .album_detail {
   padding-left: 20px;
@@ -55,6 +55,7 @@ h2 {
 .track_list {
   background-color: white;
   color: black;
+  width: 100%;
 }
 
 table {
@@ -72,7 +73,35 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-footer {
-  background-color: lightblue;
+.footer {
+  background-color: #43689b;
   color: white;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  bottom: 0px;
+}
+
+.footer_detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.footer_control {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 60%;
+}
+
+.footer_icon {
+  color: white;
+}
+
+div > a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
