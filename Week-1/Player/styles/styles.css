@@ -23,6 +23,7 @@ h2 {
 .main_container {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .player_header {
@@ -54,6 +55,21 @@ h2 {
 .track_list {
   background-color: white;
   color: black;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
 
 footer {
