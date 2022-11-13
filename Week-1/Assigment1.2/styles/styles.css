@@ -12,7 +12,7 @@ nav {
   padding: 10px;
 }
 
-.nav_icon {
+.nav-icon {
   color: black;
 }
 
@@ -20,12 +20,12 @@ h2 {
   margin: 0px;
 }
 
-.main_container {
+.main-container {
   display: flex;
   flex-wrap: wrap;
 }
 
-.player_header {
+.player-header {
   background-color: gray;
   color: white;
   display: flex;
@@ -33,16 +33,16 @@ h2 {
   padding: 20px;
 }
 
-.player_header_main{
+.player-header-main{
   width: calc(100% - 40px);
 }
 
-.album_detail {
+.album-detail {
   padding-left: 20px;
   position: relative;
 }
 
-.player_control {
+.player-control {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -51,12 +51,12 @@ h2 {
   bottom: 0px;
 }
 
-.control_icon {
+.control-icon {
   color: black;
   margin-right: 15px;
 }
 
-.track_list {
+.track-list {
   background-color: white;
   color: black;
   width: 100%;
@@ -93,21 +93,21 @@ tr:nth-child(even) {
   flex-direction: row;
 }
 
-.footer_detail {
+.footer-detail {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 20px;
 }
 
-.footer_control {
+.footer-control {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: 60%;
 }
 
-.footer_icon {
+.footer-icon {
   color: white;
 }
 
