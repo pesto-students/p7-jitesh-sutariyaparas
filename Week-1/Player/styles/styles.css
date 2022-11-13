@@ -31,8 +31,12 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   padding: 20px;
-  width: 100%;
 }
+
+.player_header_main{
+  width: calc(100% - 40px);
+}
+
 .album_detail {
   padding-left: 20px;
   position: relative;
@@ -78,8 +82,15 @@ tr:nth-child(even) {
   color: white;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 10px;
   bottom: 0px;
+}
+
+.footer-main{
+  display: flex;
+  flex-direction: row;
 }
 
 .footer_detail {
