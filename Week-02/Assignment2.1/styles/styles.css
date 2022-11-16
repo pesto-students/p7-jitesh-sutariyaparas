@@ -1,0 +1,28 @@
+body {
+  font-family: "Lato", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.main-detail {
+  display: flex;
+  padding: 10px;
+}
+
+@media (max-width: 1024px) {
+  .main-detail {
+    flex-direction: column;
+  }
+}
+
+.detail-image {
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+}
+
+.detail {
+  padding: 10px;
+}
