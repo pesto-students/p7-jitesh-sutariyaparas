@@ -40,3 +40,12 @@ table {
   border-collapse: separate;
   border-spacing: 0 1em;
 }
+
+.btn {
+  background-color: #add8e6;
+  border-radius: 2px;
+  border: 1px solid #91df91;
+}
+.btn:hover{
+  background-color: #90ee90;
+}
