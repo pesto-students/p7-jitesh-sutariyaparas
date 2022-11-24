@@ -3,7 +3,7 @@
 // Global variables can be made local (private) with closures.
 
 
-function createIncrement() {
+const createIncrement = () => {
   let count = 0;
 
   function increment() {
@@ -17,8 +17,8 @@ function createIncrement() {
   return [increment, log];
 }
 const [increment, log] = createIncrement();
-increment();
-increment();
-increment();
-log();
+increment();//1
+increment();//1
+increment();//1
+log();//0
 
