@@ -1,8 +1,8 @@
 
 
-function memoize (fn) {
+const memoize = (fn) => {
   const cache = new Map();
-  return function (...args) {
+  return (...args) => {
     console.log(cache)
     const key = args.toString();
     if (cache.has(key)) {
@@ -17,17 +17,21 @@ function memoize (fn) {
 // ref https://www.npmjs.com/package/lodash
 // const memoize = require("lodash/memoize");
 
-function time(fn) {
+const time = (fn) => {
   console.time();
   fn();
   console.timeEnd();
 }
 
-const sum = function sum(a, b) {
-  s = a + b;
+
+
+const sum = (a, b) => {
+  const s = a + b;
   console.log(s);
   return s;
 };
+
+
 
 // define memoize function
 const sumM = memoize(sum);
