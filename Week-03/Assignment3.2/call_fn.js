@@ -7,7 +7,7 @@
 // It can be used to invoke (call) a method with an owner object as an argument (parameter).
 const customer = {
   fullName: function () {
-    return this.firstName + " " + this.lastName;
+    return `${this.firstName} ${this.lastName}`;
   },
 };
 const customer1 = {
@@ -26,7 +26,7 @@ console.log(customerName);
 // The call() method can accept arguments:
 const person = {
   fullName: function (city, country) {
-    return this.firstName + " " + this.lastName + "," + city + "," + country;
+    return `${this.firstName} ${this.lastName}, ${city}, ${country}`;
   },
 };
 
