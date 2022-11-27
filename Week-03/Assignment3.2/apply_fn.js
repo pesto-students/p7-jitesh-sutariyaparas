@@ -11,7 +11,7 @@
 // Example 1
 const person = {
   fullName: function (city, country) {
-    return this.firstName + " " + this.lastName + "," + city + "," + country;
+    return `${this.firstName} ${this.lastName} ${city}, ${country}`;
   },
 };
 
