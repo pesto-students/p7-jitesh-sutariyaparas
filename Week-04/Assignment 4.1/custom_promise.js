@@ -6,6 +6,7 @@ const getNumber = () => {
     console.log(`Promise is Rejected for number ${number}`);
     return false
   } else {
+    console.log(`Promise is Resolve for number ${number}`);
     return true;
   }
   
