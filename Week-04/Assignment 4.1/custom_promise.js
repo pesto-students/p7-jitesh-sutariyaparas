@@ -9,15 +9,19 @@ class customPromise {
   }
 
   resolve(resolvedData) {
-    console.log("Resolve function called");
-    this.thenCallback(resolvedData);
-    this.status = "resolve";
+    if (this.status == "pending") {
+      console.log("Resolve function called");
+      this.thenCallback(resolvedData);
+      this.status = "resolve";
+    }
   }
 
   reject(rejectedData) {
-    console.log("Reject function called");
-    this.catchCallback(rejectedData);
-    this.status = "rejected";
+    if (this.status == "pending") {
+      console.log("Reject function called");
+      this.catchCallback(rejectedData);
+      this.status = "rejected";
+    }
   }
 
   then(thenFn) {
