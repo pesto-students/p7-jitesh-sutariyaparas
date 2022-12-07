@@ -1,0 +1,29 @@
+const Task1 = () => {
+  const task1Res = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Task 1 with 2 second");
+    }, 2000);
+  });
+  console.log("Task 1 Done");
+  return task1Res;
+};
+
+const Task2 = () => {
+  const task2Res = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Task 1 with 2 second");
+    }, 2000);
+  });
+  console.log("Task 2 Done");
+  return task2Res;
+};
+
+async function fnTaskCall() {
+  console.log("Call 1 Start");
+  await Task1();
+  console.log("Call 2 Started");
+  await Task2();
+  console.log("Call END");
+}
+
+fnTaskCall();
