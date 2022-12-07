@@ -1,4 +1,4 @@
-// Using Async/Await and Generators, create separate functions and achieve the samefunctionality.(3hours)
+// Using Async/Await and Generators, create separate functions and achieve the same functionality.(3hours)
 // Execute 3 callback functions asynchronously, for example doTask1(), doTask2() and doTask3()
 
 const validateEmail = (email) => {
