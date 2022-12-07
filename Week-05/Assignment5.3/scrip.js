@@ -1,4 +1,4 @@
-// Write a function called has Duplicate which accepts an array and returns true or false if that array contains a duplicate
+// Write a function called hasDuplicate which accepts an array and returns true or false if that array contains a duplicate
 
 const hasDuplicate = (myArray) => {
   let setArray = new Set(myArray);
