@@ -1,18 +1,5 @@
 // import * as mathFn from 'main.js';
-
-const mathFunction = {
-  sum: (a, b) => {
-    return a + b;
-  },
-
-  sub: (a, b) => {
-    return a - b;
-  },
-
-  mul: (a, b) => {
-    return a * b;
-  },
-};
+const mathFunction = require("./main");
 
 //test for sum()
 test("Adding two numbers", () => {

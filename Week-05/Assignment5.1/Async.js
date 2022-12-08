@@ -29,6 +29,18 @@ function* getUserData() {
   yield "Get my Orders Done";
 }
 
+// function * fnTaskCallGen(){
+//   yield validateEmail(email)
+//     .then((value) => console.log(value))
+//     .catch((value) => console.error(value));
+
+//   console.log("*Generating Token...");
+//   await generateToken(email, password)
+//     .then((value) => console.log(value))
+//     .catch((value) => console.error(value));
+  
+// }
+
 async function fnTaskCall(email, password) {
   console.log("*Validating Email...");
   await validateEmail(email)

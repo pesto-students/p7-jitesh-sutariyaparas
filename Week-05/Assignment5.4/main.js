@@ -1,7 +1,7 @@
 //  Create a simple Javascript function code for addition, subtraction, and multiplication
 //  of 2numbers and write the corresponding Jest based tests for it.
 
-export const mathFunction = {
+const mathFunction = {
   sum: (a, b) => {
     return a + b;
   },
@@ -15,4 +15,4 @@ export const mathFunction = {
   },
 };
 
-// export { mathFunction }
+module.exports = mathFunction; //for node js 
