@@ -1,0 +1,118 @@
+body {
+  font-family: "Lato", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: lightgray;
+  padding: 10px;
+}
+
+.nav-icon {
+  color: black;
+}
+
+h2 {
+  margin: 0px;
+}
+
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.player-header {
+  background-color: gray;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.player-header-main{
+  width: calc(100% - 40px);
+}
+
+.album-detail {
+  padding-left: 20px;
+  position: relative;
+}
+
+.player-control {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0px;
+}
+
+.control-icon {
+  color: black;
+  margin-right: 15px;
+}
+
+.track-list {
+  background-color: white;
+  color: black;
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.footer {
+  background-color: #43689b;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  bottom: 0px;
+}
+
+.footer-main{
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.footer-control {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 60%;
+}
+
+.footer-icon {
+  color: white;
+}
+
+div > a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
