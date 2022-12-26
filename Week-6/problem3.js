@@ -23,14 +23,11 @@ const shortArray = (array) => {
   oneNumberList = [];
   twoNumberList = [];
   for (let i in array) {
-    
     if (array[i] == 0) {
       zeroNumberList.push(array[i]);
-    }
-    if (array[i] == 1) {
+    } else if (array[i] == 1) {
       oneNumberList.push(array[i]);
-    }
-    if (array[i] == 2) {
+    } else {
       twoNumberList.push(array[i]);
     }
   }
