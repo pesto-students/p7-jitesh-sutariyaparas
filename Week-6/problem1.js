@@ -6,14 +6,59 @@
 // You should return[1, 2, 3, 6, 9, 8, 7, 4, 5]
 
 const spiralMatrix = (matrix) => {
+  var row = matrix.length;
+  var col = matrix[0].length;
+  var top = 0;
+  var bottom = row - 1;
+  var left = 0;
+  var right = col - 1;
   let spiral = [];
-  
-  for (let i = 0; i < matrix.length; i++) {
-    console.log(matrix[i]);
-    if (i==0){
-        spiral = [...spiral,...matrix[i]]
+
+  var dir = 0;
+
+  while (top <= bottom && left <= right) {
+    //# moving left->right
+    if (dir == 0) {
+      for (let i = left; i <= right; i++) {
+        spiral.push(matrix[top][i]);
+      }
+
+      // # row, move down to the next row.
+      top += 1;
+      dir = 1;
+    }
+
+    //# moving top->bottom
+    else if (dir == 1) {
+      for (let i = top; i <= bottom; i++) {
+        spiral.push(matrix[i][right]);
+      }
+
+      right -= 1;
+      dir = 2;
+    }
+
+    // # moving right->left
+    else if (dir == 2) {
+      for (let i = right; i >= left; i--) {
+        spiral.push(matrix[bottom][i]);
+      }
+
+      dir = 3;
+      bottom -= 1;
+    }
+
+    // # moving bottom->top
+    else if (dir == 3) {
+      for (let i = bottom; i >= top; i--) {
+        spiral.push(matrix[i][left]);
+      }
+
+      dir = 0;
+      left += 1;
     }
   }
+
   return spiral;
 };
 
@@ -21,6 +66,13 @@ var matrix = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9],
+];
+
+var matrix = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 16],
 ];
 
 console.log(spiralMatrix(matrix));
