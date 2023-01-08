@@ -1,78 +1,44 @@
-// Problem 6.2 Spiral Order Matrix II
-// Problem Description Given a matrix of m * n elements (m rows, n columns),
-// return all elements of the matrix in spiral order.
-// Example: Given the following
-// matrix: [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ]
-// You should return[1, 2, 3, 6, 9, 8, 7, 4, 5]
+//Max Sum Contiguous Subarray
 
-const spiralMatrix = (matrix) => {
-  var row = matrix.length;
-  var col = matrix[0].length;
-  var top = 0;
-  var bottom = row - 1;
-  var left = 0;
-  var right = col - 1;
-  let spiral = [];
+function maxSubArraySum(a, size) {
+  var max_sum = Number.MIN_VALUE,
+    max_end_indexing_here = 0,
+    start_index = 0,
+    end_index = 0,
+    s = 0;
 
-  var dir = 0;
+  for (i = 0; i < size; i++) {
+    max_end_indexing_here += a[i];
+    // console.log("start_index__,end_index__", start_index, end_index);
+    // console.log(
+    //   "max_sum__,max_end_indexing_here",
+    //   max_sum,
+    //   max_end_indexing_here
+    // );
 
-  while (top <= bottom && left <= right) {
-    //# moving left->right
-    if (dir == 0) {
-      for (let i = left; i <= right; i++) {
-        spiral.push(matrix[top][i]);
-      }
-
-      // # row, move down to the next row.
-      top += 1;
-      dir = 1;
+    if (max_sum < max_end_indexing_here) {
+    //   console.log(
+    //     "####IF1_ max_sum < max_end_indexing_here__",
+    //     max_sum,
+    //     max_end_indexing_here
+    //   );
+      max_sum = max_end_indexing_here;
+      start_index = s;
+      end_index = i;
     }
 
-    //# moving top->bottom
-    else if (dir == 1) {
-      for (let i = top; i <= bottom; i++) {
-        spiral.push(matrix[i][right]);
-      }
-
-      right -= 1;
-      dir = 2;
-    }
-
-    // # moving right->left
-    else if (dir == 2) {
-      for (let i = right; i >= left; i--) {
-        spiral.push(matrix[bottom][i]);
-      }
-
-      dir = 3;
-      bottom -= 1;
-    }
-
-    // # moving bottom->top
-    else if (dir == 3) {
-      for (let i = bottom; i >= top; i--) {
-        spiral.push(matrix[i][left]);
-      }
-
-      dir = 0;
-      left += 1;
+    if (max_end_indexing_here < 0) {
+    //   console.log("@@@@ IF2 max_end_indexing_here < 0", max_end_indexing_here);
+      max_end_indexing_here = 0;
+      s = i + 1;
     }
   }
+  console.log("Maximum contiguous sum is " + max_sum);
+  console.log("start_indexing index " + start_index);
+  console.log("end_indexing index " + end_index);
+}
 
-  return spiral;
-};
 
-var matrix = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-];
-
-var matrix = [
-  [1, 2, 3, 4],
-  [5, 6, 7, 8],
-  [9, 10, 11, 12],
-  [13, 14, 15, 16],
-];
-
-console.log(spiralMatrix(matrix));
+var a = [-2, 6, -3, -7, -6, 4, -1, -2, -1, -5, -3];
+var n = a.length;
+maxSubArraySum(a, n);
