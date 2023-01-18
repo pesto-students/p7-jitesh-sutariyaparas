@@ -1,4 +1,5 @@
-// Pair With Given Difference
+// Problem 6.5: Pair With Given Difference
+
 function pairDiff(array, diff) {
   for (i = 0; i <= array.length; i++) {
     console.log(array[i], typeof i);
