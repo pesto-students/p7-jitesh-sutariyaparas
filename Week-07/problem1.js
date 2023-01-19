@@ -1,13 +1,13 @@
 // Problem 6.1: Max Sum Contiguous Subarray
 
-function maxSubArraySum(array) {
-  var maxSum = Number.MIN_VALUE,
+const maxSubArraySum = (array) => {
+  let maxSum = Number.MIN_VALUE,
     maxEndIndexSum = 0,
     startIndex = 0,
     endIndex = 0,
     sumStartIndex = 0;
 
-  for (i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     maxEndIndexSum += array[i];
 
     if (maxSum < maxEndIndexSum) {

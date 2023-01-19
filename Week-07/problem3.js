@@ -16,12 +16,12 @@
 // Expected Auxiliary Space: O(1)
 // Constraints: 1 <= N <= 10^6 0 <= A[i] <= 2
 
-array = [0, 2, 2, 1, 1, 0, 0];
+let array = [0, 2, 2, 1, 1, 0, 0];
 
 const shortArray = (array) => {
-  zeroNumberList = [];
-  oneNumberList = [];
-  twoNumberList = [];
+  let zeroNumberList = [];
+  let oneNumberList = [];
+  let twoNumberList = [];
   for (let i in array) {
     if (array[i] == 0) {
       zeroNumberList.push(array[i]);

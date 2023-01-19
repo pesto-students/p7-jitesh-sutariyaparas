@@ -1,5 +1,5 @@
 // Problem 6.4 : Best time to buy and sell stock
-function maxProfit(prices) {
+const maxProfit = (prices) => {
   let buy = prices[0];
   let maxProfit = 0;
   for (let i = 1; i < prices.length; i++) {
@@ -16,5 +16,5 @@ function maxProfit(prices) {
 }
 
 let prices = [0.5, 7, 1, 5, 6, 4];
-let maxProfit = maxProfit(prices);
-console.log(maxProfit);
+let maxProfitOP = maxProfit(prices);
+console.log(maxProfitOP);

@@ -4,22 +4,22 @@
 // Return the sum of the three integers.Assume that there will only be one solution
 //Example: given array S = {-1 2 1 -4}, and target = 1. The sum that is closest to the target is 2. (-1 + 2 + 1 = 2)
 
-function closestSum(array, target) {
-  var sumList = [];
-  for (i = 0; i <= array.length; i++) {
-    j = i + 2;
+const closestSum =(array, target) => {
+  let sumList = [];
+  for (let i = 0; i <= array.length; i++) {
+    let j = i + 2;
     if (j < array.length) {
       let sum = array[i] + array[i + 1] + array[j];
       sumList.push(sum);
     }
   }
 
-  for (i = 0; i < sumList.length; i++) {
+  for (let i = 0; i < sumList.length; i++) {
     if (i == 0) {
-      var result = sumList[i];
-      var previousDiff = Math.abs(sumList[i] - target);
+      let result = sumList[i];
+      let previousDiff = Math.abs(sumList[i] - target);
     } else {
-      var currentDiff = Math.abs(sumList[i] - target);
+      let currentDiff = Math.abs(sumList[i] - target);
       if (currentDiff < previousDiff) {
         result = sumList[i];
       }
@@ -28,7 +28,7 @@ function closestSum(array, target) {
   return result;
 }
 
-var array = [-1, 2, 1, -4];
-var target = 1;
+let array = [-1, 2, 1, -4];
+let target = 1;
 
 console.log(closestSum(array,target));

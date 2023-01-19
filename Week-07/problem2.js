@@ -6,19 +6,19 @@
 // You should return[1, 2, 3, 6, 9, 8, 7, 4, 5]
 
 const spiralMatrix = (matrix) => {
-  var row = matrix.length;
-  var col = matrix[0].length;
-  var top = 0;
-  var bottom = row - 1;
-  var left = 0;
-  var right = col - 1;
+  let row = matrix.length;
+  let col = matrix[0].length;
+  let top = 0;
+  let bottom = row - 1;
+  let left = 0;
+  let right = col - 1;
   let spiral = [];
 
-  var dir = 0;
+  let dir = 0;
 
   while (top <= bottom && left <= right) {
     //# moving left->right
-    if (dir == 0) {
+    if (dir === 0) {
       for (let i = left; i <= right; i++) {
         spiral.push(matrix[top][i]);
       }
@@ -29,7 +29,7 @@ const spiralMatrix = (matrix) => {
     }
 
     //# moving top->bottom
-    else if (dir == 1) {
+    else if (dir === 1) {
       for (let i = top; i <= bottom; i++) {
         spiral.push(matrix[i][right]);
       }
@@ -39,7 +39,7 @@ const spiralMatrix = (matrix) => {
     }
 
     // # moving right->left
-    else if (dir == 2) {
+    else if (dir === 2) {
       for (let i = right; i >= left; i--) {
         spiral.push(matrix[bottom][i]);
       }
@@ -49,7 +49,7 @@ const spiralMatrix = (matrix) => {
     }
 
     // # moving bottom->top
-    else if (dir == 3) {
+    else if (dir === 3) {
       for (let i = bottom; i >= top; i--) {
         spiral.push(matrix[i][left]);
       }
