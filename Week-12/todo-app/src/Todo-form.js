@@ -1,16 +1,15 @@
 import "./Todo-form.css";
 import React, { useState } from "react";
 
-function TodoForm({ createNote }) {
+function TodoForm({ createNote}) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
-    createNote({ name: name, description: description });
-  };
-
-  const removeTodo = () => {
+    createNote({ name: name, description: description, id: 1});
+    setDescription("");
+    setName("");
   };
 
   return (
@@ -26,9 +25,7 @@ function TodoForm({ createNote }) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <input type="submit" value="Submit" />
-        <button onClick={removeTodo}>Add</button>
-        <button onClick={removeTodo}>DELETE</button>
+        <input type="submit" value="Add note" />
       </form>
     </div>
   );

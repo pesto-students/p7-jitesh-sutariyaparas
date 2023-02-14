@@ -1,9 +1,17 @@
 import "./Todo-list.css";
+import TodoCard from "./Todo-card.js";
 
-function TodoList(toList) {
+function TodoList({ todoListData, removeFromList }) {
+  const removeNote = (value) => {
+    removeFromList(value);
+  };
   return (
     <>
-      <div className="todo-list">LIST</div>
+      <div>
+        {todoListData.map((e) => (
+          <TodoCard values={e} removeNote={removeNote}></TodoCard>
+        ))}
+      </div>
     </>
   );
 }
