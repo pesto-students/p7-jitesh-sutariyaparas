@@ -1,13 +1,13 @@
 import "./Todo-form.css";
 import React, { useState } from "react";
 
-function TodoForm({ createNote}) {
+const TodoForm = ({ createNote }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    createNote({ name: name, description: description, id: 1});
+    createNote({ name: name, description: description, id: 1 });
     setDescription("");
     setName("");
   };
@@ -29,6 +29,6 @@ function TodoForm({ createNote}) {
       </form>
     </div>
   );
-}
+};
 
 export default TodoForm;

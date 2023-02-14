@@ -3,7 +3,7 @@ import TodoForm from "./Todo-form.js";
 import TodoList from "./Todo-list.js";
 import React, { useState } from "react";
 
-function TodoApp() {
+const TodoApp = () => {
   const [todoListData, setTodoListData] = useState([]);
   const createNote = (values) => {
     const list = todoListData;
@@ -29,6 +29,6 @@ function TodoApp() {
       <TodoList todoListData={todoListData} removeFromList={removeFromList} />
     </>
   );
-}
+};
 
 export default TodoApp;

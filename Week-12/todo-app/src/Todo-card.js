@@ -1,8 +1,7 @@
 // import "./Todo-list.css";
 // import React, { useState } from "react";
 
-function TodoCard({values,removeNote}) {
-
+const TodoCard = ({ values, removeNote }) => {
   const removeCard = () => {
     removeNote(values);
   };
@@ -16,6 +15,6 @@ function TodoCard({values,removeNote}) {
       </div>
     </>
   );
-}
+};
 
 export default TodoCard;

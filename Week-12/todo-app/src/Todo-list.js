@@ -1,7 +1,7 @@
 import "./Todo-list.css";
 import TodoCard from "./Todo-card.js";
 
-function TodoList({ todoListData, removeFromList }) {
+const TodoList = ({ todoListData, removeFromList }) => {
   const removeNote = (value) => {
     removeFromList(value);
   };
@@ -14,6 +14,6 @@ function TodoList({ todoListData, removeFromList }) {
       </div>
     </>
   );
-}
+};
 
 export default TodoList;
