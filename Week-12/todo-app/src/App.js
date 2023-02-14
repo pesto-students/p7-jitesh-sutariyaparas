@@ -38,20 +38,29 @@ const TodoApp = () => {
   };
 
   const showTodoForm = (values) => {
-    console.log("Show POPUP clicked");
     setShowForm(true);
   };
 
   const closeTodoForm = (values) => {
-    console.log("Show POPUP clicked");
     setShowForm(false);
     setFormValues({});
   };
 
   const actionEdit = (values) => {
     setShowForm(true);
-    console.log("EDIT ACTION__", values);
     setFormValues(values);
+  };
+
+  const actionUpdate = (values) => {
+    const list = todoListData;
+    todoListData.forEach((toDO, index) => {
+      if (toDO.id === values.id) {
+        list[index] = values;
+        setTodoListData([...list]);
+        setShowForm(false);
+        return;
+      }
+    });
   };
 
   return (
@@ -62,6 +71,7 @@ const TodoApp = () => {
           createNote={createNote}
           closeTodoForm={closeTodoForm}
           values={FormValues}
+          actionUpdate={actionUpdate}
         />
       ) : (
         <></>

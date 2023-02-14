@@ -1,7 +1,7 @@
 import "./Todo-form.css";
 import React, { useState } from "react";
 
-const TodoForm = ({ createNote, closeTodoForm, values }) => {
+const TodoForm = ({ createNote, closeTodoForm, values, actionUpdate }) => {
   const [name, setName] = useState(values.name);
   const [description, setDescription] = useState(values.description);
   const handleSubmit = (event) => {
@@ -32,6 +32,18 @@ const TodoForm = ({ createNote, closeTodoForm, values }) => {
             onChange={(e) => setDescription(e.target.value)}
           />
           {values.id ? <></> : <input type="submit" value="Add note" />}
+          <button
+            onClick={(event) => {
+              const newValues = values;
+              newValues["name"] = name;
+              newValues["description"] = description;
+              actionUpdate(newValues);
+              console.log("UPDATE BUTTON CLICK", name, description, values);
+              event.preventDefault();
+            }}
+          >
+            UPDATE
+          </button>
         </form>
       </div>
     </div>
