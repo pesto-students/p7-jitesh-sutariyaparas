@@ -25,7 +25,7 @@ const TodoApp = () => {
 
   return (
     <>
-      <TodoForm createNote={createNote} />
+      <TodoForm createNote={createNote} todoListData={todoListData} />
       <TodoList todoListData={todoListData} removeFromList={removeFromList} />
     </>
   );

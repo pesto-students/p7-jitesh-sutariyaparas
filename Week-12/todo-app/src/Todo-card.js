@@ -9,8 +9,9 @@ const TodoCard = ({ values, removeNote }) => {
   return (
     <>
       <div className="todo-list">
-        {values.name}
-        {values.description}
+        Title:{values.name}
+        Description:{values.description}
+        ID:{values.id}
         <button onClick={removeCard}>DELETE</button>
       </div>
     </>

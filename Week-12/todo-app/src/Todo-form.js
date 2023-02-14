@@ -1,13 +1,17 @@
 import "./Todo-form.css";
 import React, { useState } from "react";
 
-const TodoForm = ({ createNote }) => {
+const TodoForm = ({ createNote, todoListData }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createNote({ name: name, description: description, id: 1 });
+    createNote({
+      name: name,
+      description: description,
+      id: todoListData.length + 1,
+    });
     setDescription("");
     setName("");
   };
