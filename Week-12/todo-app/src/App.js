@@ -12,7 +12,7 @@ const TodoApp = () => {
     list.push(values);
     setTodoListData([...list]);
   };
-  const removeFromList = (values) => {
+  const actionRemove = (values) => {
     todoListData.forEach((toDO, index) => {
       console.log(index + " : " + toDO.id);
       if (toDO.id === values.id) {
@@ -40,7 +40,7 @@ const TodoApp = () => {
   return (
     <>
       <TodoForm createNote={createNote} />
-      <TodoList todoListData={todoListData} removeFromList={removeFromList} actionDone={actionDone} />
+      <TodoList todoListData={todoListData} actionRemove={actionRemove} actionDone={actionDone} />
     </>
   );
 };

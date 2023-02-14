@@ -1,9 +1,9 @@
 import "./Todo-list.css";
 import TodoCard from "./Todo-card.js";
 
-const TodoList = ({ todoListData, removeFromList,actionDone}) => {
+const TodoList = ({ todoListData, actionRemove,actionDone}) => {
   const removeNote = (value) => {
-    removeFromList(value);
+    actionRemove(value);
   };
   const doneNote = (value) =>{
     actionDone(value);
