@@ -1,7 +1,7 @@
 import "./Todo-form.css";
 import React, { useState } from "react";
 
-const TodoForm = ({ createNote, todoListData }) => {
+const TodoForm = ({ createNote }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
@@ -10,7 +10,6 @@ const TodoForm = ({ createNote, todoListData }) => {
     createNote({
       name: name,
       description: description,
-      id: todoListData.length + 1,
     });
     setDescription("");
     setName("");
