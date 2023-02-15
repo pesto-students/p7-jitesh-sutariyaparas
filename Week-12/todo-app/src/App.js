@@ -10,7 +10,7 @@ const TodoApp = () => {
   const createNote = (values) => {
     const list = todoListData;
     values["id"] = todoListData.length + 1;
-    values["status"] = "draft";
+    values["status"] = "Draft";
     list.push(values);
     setTodoListData([...list]);
   };
@@ -29,7 +29,7 @@ const TodoApp = () => {
     todoListData.forEach((toDO, index) => {
       if (toDO.id === values.id) {
         const list = todoListData;
-        values["status"] = "done";
+        values["status"] = "Done";
         list[index] = values;
         setTodoListData([...list]);
         return;
