@@ -36,6 +36,7 @@ const TodoForm = ({ createNote, closeTodoForm, values, actionUpdate }) => {
               id="name"
               value={name}
               placeholder="Enter your name"
+              required
               onChange={(e) => setName(e.target.value)}
             />
           </div>

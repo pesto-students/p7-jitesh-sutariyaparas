@@ -13,6 +13,7 @@ const TodoApp = () => {
     values["status"] = "Draft";
     list.push(values);
     setTodoListData([...list]);
+    closeTodoForm();
   };
   const actionRemove = (values) => {
     todoListData.forEach((toDO, index) => {
@@ -57,6 +58,7 @@ const TodoApp = () => {
       if (toDO.id === values.id) {
         list[index] = values;
         setTodoListData([...list]);
+        setFormValues({});
         setShowForm(false);
         return;
       }
