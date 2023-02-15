@@ -65,24 +65,43 @@ const TodoApp = () => {
 
   return (
     <>
-      <button onClick={showTodoForm}>Add note</button>
-      {ShowForm ? (
-        <TodoForm
-          createNote={createNote}
-          closeTodoForm={closeTodoForm}
-          values={FormValues}
-          actionUpdate={actionUpdate}
-        />
-      ) : (
-        <></>
-      )}
+      <header>
+        <div>
+          <h2>ToDo Application</h2>
+        </div>
+      </header>
+      <body>
+        <div className="body-header">
+          <div class="btn btn-success btn-sm">
+            <i
+              Style="font-size:14px;"
+              class="fas fa-plus-circle"
+              onClick={showTodoForm}
+            >
+              {" "}
+              Add note
+            </i>
+          </div>
+        </div>
+        {ShowForm ? (
+          <TodoForm
+            createNote={createNote}
+            closeTodoForm={closeTodoForm}
+            values={FormValues}
+            actionUpdate={actionUpdate}
+          />
+        ) : (
+          <></>
+        )}
 
-      <TodoList
-        todoListData={todoListData}
-        actionRemove={actionRemove}
-        actionDone={actionDone}
-        actionEdit={actionEdit}
-      />
+        <TodoList
+          todoListData={todoListData}
+          actionRemove={actionRemove}
+          actionDone={actionDone}
+          actionEdit={actionEdit}
+        />
+      </body>
+      <footer></footer>
     </>
   );
 };

@@ -28,10 +28,8 @@ const TodoForm = ({ createNote, closeTodoForm, values, actionUpdate }) => {
             onClick={() => closeTodoForm()}
           ></i>
         </div>
-
         <form onSubmit={handleSubmit}>
-          <h2>Note</h2>
-
+          <h2 Style="margin-bottom: 20px;">Note</h2>
           <div className="form-group">
             <label for="name">Name</label>
             <input
@@ -57,13 +55,13 @@ const TodoForm = ({ createNote, closeTodoForm, values, actionUpdate }) => {
           ) : (
             <input
               type="submit"
-              className="btn btn-success"
+              className="btn btn-success form-button"
               value="Save"
             ></input>
           )}
           {values.id ? (
             <button
-              className="btn btn-primary"
+              className="btn btn-primary form-button"
               onClick={(event) => {
                 const newValues = values;
                 newValues["name"] = name;

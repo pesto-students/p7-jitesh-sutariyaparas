@@ -4,8 +4,9 @@
     background-color: lightblue;
     padding: 5px;
     border-radius: 10px;
+    margin: 5PX;
 }
-/* .card-button{
-    height: 20px;
-    font-size: 10px;
-} */
+
+.card-list{
+    padding: 5%;
+}

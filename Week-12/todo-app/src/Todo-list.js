@@ -13,7 +13,7 @@ const TodoList = ({ todoListData, actionRemove, actionDone, actionEdit }) => {
   };
   return (
     <>
-      <div>
+      <div className="card-list">
         {todoListData.map((e) => (
           <TodoCard
             values={e}
