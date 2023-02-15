@@ -1,12 +1,18 @@
 import "./App.css";
 import TodoForm from "./Todo-form.js";
 import TodoList from "./Todo-list.js";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const TodoApp = () => {
   const [todoListData, setTodoListData] = useState([]);
   const [ShowForm, setShowForm] = useState(false);
   const [FormValues, setFormValues] = useState({});
+  const [NoteCount, setNoteCount] = useState(0);
+
+  useEffect(() => {
+    setNoteCount(todoListData.length);
+  }, [todoListData]);
+
   const createNote = (values) => {
     const list = todoListData;
     values["id"] = todoListData.length + 1;
@@ -76,7 +82,9 @@ const TodoApp = () => {
         <div className="btn btn-success btn-sm btn-add" onClick={showTodoForm}>
           <i className="fas fa-plus-circle"> Add note</i>
         </div>
+        <span> Total note: {NoteCount}</span>
       </div>
+
       {ShowForm ? (
         <TodoForm
           createNote={createNote}
