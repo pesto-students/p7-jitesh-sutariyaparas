@@ -10,7 +10,7 @@ const TodoApp = () => {
   const createNote = (values) => {
     const list = todoListData;
     values["id"] = todoListData.length + 1;
-    values["status"] = "Draft";
+    values["status"] = "Pending";
     list.push(values);
     setTodoListData([...list]);
     closeTodoForm();

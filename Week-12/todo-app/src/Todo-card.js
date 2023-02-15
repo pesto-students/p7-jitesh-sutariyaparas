@@ -16,7 +16,7 @@ const TodoCard = ({ values, removeNote, doneNote, editNote }) => {
     <>
       <div className="todo-card">
         <div>
-          {values.status === "Draft" ? (
+          {values.status === "Pending" ? (
             <span className="note-status badge progress-bar-warning">
               {values.status}
             </span>
@@ -37,7 +37,7 @@ const TodoCard = ({ values, removeNote, doneNote, editNote }) => {
             Edit
           </i>
         </div>
-        {values.status === "Draft" ? (
+        {values.status === "Pending" ? (
           <div className="btn card-approve-btn card-btn">
             <i className="fas fa-check" onClick={doneCard}>
               Approve
