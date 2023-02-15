@@ -17,11 +17,11 @@ const TodoCard = ({ values, removeNote, doneNote, editNote }) => {
       <div className="todo-card">
         <div>
           {values.status === "Draft" ? (
-            <span className="note-status badge progress-bar-warning" >
+            <span className="note-status badge progress-bar-warning">
               {values.status}
             </span>
           ) : (
-            <span  className="note-status badge progress-bar-success">
+            <span className="note-status badge progress-bar-success">
               {values.status}
             </span>
           )}
@@ -30,23 +30,24 @@ const TodoCard = ({ values, removeNote, doneNote, editNote }) => {
             <h4>{values.name}</h4>
           </span>
         </div>
-        <div> Description:{values.description}</div>
+        <div className="description-field">{values.description}</div>
 
         <div className="btn card-edit-btn card-btn">
           <i className="fas fa-edit" onClick={editCard}>
             Edit
           </i>
         </div>
-
-        <div className="btn card-approve-btn card-btn">
-          <i className="fas fa-check" onClick={doneCard}>
-            Approve
-          </i>
-        </div>
+        {values.status === "Draft" ? (
+          <div className="btn card-approve-btn card-btn">
+            <i className="fas fa-check" onClick={doneCard}>
+              Approve
+            </i>
+          </div>
+        ) : (
+          <></>
+        )}
         <div className="btn card-remove-btn card-btn">
-          <i className="fas fa-trash" onClick={removeCard}>
-            Remove
-          </i>
+          <i className="fas fa-trash" onClick={removeCard}></i>
         </div>
       </div>
     </>

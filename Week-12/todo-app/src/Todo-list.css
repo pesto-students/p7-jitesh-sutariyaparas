@@ -1,6 +1,6 @@
 .todo-card {
   background-color: lightblue;
-  padding: 3%;
+  padding: 1%;
   border-radius: 10px;
   margin: 5px;
 }
@@ -14,20 +14,27 @@
 
 card-btn {
   font-size: 15px;
-  padding: 0px;
 }
 
 .card-edit-btn {
   color: blue;
+  padding: 0px;
 }
 
 .card-approve-btn {
   color: green;
+  padding: 0px;
 }
 
 .card-remove-btn {
   color: red;
+  padding: 0px;
+  float: right;
 }
 .note-status{
     float:right
+}
+
+.description-field{
+  margin-bottom: 5px;
 }
