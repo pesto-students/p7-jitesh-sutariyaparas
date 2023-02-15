@@ -5,7 +5,8 @@
 header {
   padding-left: 5%;
   padding-right: 5%;
-  color: gray;
+  padding-bottom: 1%;
+  color: black;
 }
 
 .body-header {
@@ -14,4 +15,5 @@ header {
 }
 .btn-add {
   font-size: 14px;
+  border-radius: 10px;
 }

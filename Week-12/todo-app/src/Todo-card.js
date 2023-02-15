@@ -1,5 +1,5 @@
 import "./Todo-list.css";
-// import React, { useState } from "react";
+import React from "react";
 
 const TodoCard = ({ values, removeNote, doneNote, editNote }) => {
   const removeCard = () => {

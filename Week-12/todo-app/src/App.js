@@ -64,42 +64,36 @@ const TodoApp = () => {
   };
 
   return (
-    <>
+    <div className="todo-app">
       <header>
         <div>
           <h2>ToDo Application</h2>
         </div>
       </header>
-        <div className="body-header">
-          <div className="btn btn-success btn-sm btn-add">
-            <i
-              className="fas fa-plus-circle"
-              onClick={showTodoForm}
-            >
-              {" "}
-              Add note
-            </i>
-          </div>
+      <div className="body-header">
+        <div className="btn btn-success btn-sm btn-add" onClick={showTodoForm}>
+          <i className="fas fa-plus-circle"> Add note</i>
         </div>
-        {ShowForm ? (
-          <TodoForm
-            createNote={createNote}
-            closeTodoForm={closeTodoForm}
-            values={FormValues}
-            actionUpdate={actionUpdate}
-          />
-        ) : (
-          <></>
-        )}
-
-        <TodoList
-          todoListData={todoListData}
-          actionRemove={actionRemove}
-          actionDone={actionDone}
-          actionEdit={actionEdit}
+      </div>
+      {ShowForm ? (
+        <TodoForm
+          createNote={createNote}
+          closeTodoForm={closeTodoForm}
+          values={FormValues}
+          actionUpdate={actionUpdate}
         />
+      ) : (
+        <></>
+      )}
+
+      <TodoList
+        todoListData={todoListData}
+        actionRemove={actionRemove}
+        actionDone={actionDone}
+        actionEdit={actionEdit}
+      />
       <footer></footer>
-    </>
+    </div>
   );
 };
 

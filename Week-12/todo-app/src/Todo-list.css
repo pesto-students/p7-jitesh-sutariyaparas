@@ -1,8 +1,9 @@
 .todo-card {
-  background-color: lightblue;
   padding: 1%;
   border-radius: 10px;
   margin: 5px;
+  background-color: #ffdee9;
+  background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
 }
 
 .card-list {
@@ -12,8 +13,8 @@
   padding-top: 2%;
 }
 
-card-btn {
-  font-size: 15px;
+.card-btn {
+  margin-right: 10px;
 }
 
 .card-edit-btn {
@@ -31,10 +32,10 @@ card-btn {
   padding: 0px;
   float: right;
 }
-.note-status{
-    float:right
+.note-status {
+  float: right;
 }
 
-.description-field{
+.description-field {
   margin-bottom: 5px;
 }
