@@ -75,7 +75,8 @@ const TodoApp = () => {
     <div className="todo-app">
       <header>
         <div>
-          <h2>ToDo Application</h2>
+          <span><img className="app-icon" src={process.env.PUBLIC_URL + "/todo.png"} alt="TODO"/></span>
+          <span><h2>ToDo Application</h2></span>
         </div>
       </header>
       <div className="body-header">

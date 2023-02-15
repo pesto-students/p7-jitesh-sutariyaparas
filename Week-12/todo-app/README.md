@@ -1,3 +1,10 @@
+# TODO React Application
+<img src="./public/todo-list.jpg" width="auto" height="auto" />
+
+<br>
+<img src="./public/todo-form.png" width="auto" height="auto" />
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
