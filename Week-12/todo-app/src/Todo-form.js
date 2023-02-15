@@ -21,17 +21,16 @@ const TodoForm = ({ createNote, closeTodoForm, values, actionUpdate }) => {
   return (
     <div className="todo-box">
       <div className="todo-form">
-        <div class="btn close-button">
+        <div className="btn close-button">
           <i
-            Style="color:red;font-size:25px;"
-            class="fas fa-times-circle"
+            className="fas fa-times-circle"
             onClick={() => closeTodoForm()}
           ></i>
         </div>
         <form onSubmit={handleSubmit}>
-          <h2 Style="margin-bottom: 20px;">Note</h2>
+          <h2 className="todo-form-header" >Note</h2>
           <div className="form-group">
-            <label for="name">Name</label>
+            <label htmlFor="name">Name</label>
             <input
               type="text"
               id="name"
@@ -41,7 +40,7 @@ const TodoForm = ({ createNote, closeTodoForm, values, actionUpdate }) => {
             />
           </div>
           <div className="form-group">
-            <label for="description">Description</label>
+            <label htmlFor="description">Description</label>
             <textarea
               id="description"
               value={description}
@@ -67,7 +66,6 @@ const TodoForm = ({ createNote, closeTodoForm, values, actionUpdate }) => {
                 newValues["name"] = name;
                 newValues["description"] = description;
                 actionUpdate(newValues);
-                console.log("UPDATE BUTTON CLICK", name, description, values);
                 event.preventDefault();
               }}
             >

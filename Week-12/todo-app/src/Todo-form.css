@@ -1,5 +1,3 @@
-
-
 .todo-box {
   position: fixed;
   width: 100%;
@@ -26,6 +24,8 @@
 
 .close-button {
   float: right;
+  color: red;
+  font-size: 25px;
 }
 
 .form-group {
@@ -48,7 +48,10 @@ textarea {
   border-color: lightblue;
 }
 
-.form-button{
+.form-button {
   width: 100%;
 }
 
+.todo-form-header {
+  margin-bottom: 20px;
+}

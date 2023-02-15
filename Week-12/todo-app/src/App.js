@@ -70,12 +70,10 @@ const TodoApp = () => {
           <h2>ToDo Application</h2>
         </div>
       </header>
-      <body>
         <div className="body-header">
-          <div class="btn btn-success btn-sm">
+          <div className="btn btn-success btn-sm btn-add">
             <i
-              Style="font-size:14px;"
-              class="fas fa-plus-circle"
+              className="fas fa-plus-circle"
               onClick={showTodoForm}
             >
               {" "}
@@ -100,7 +98,6 @@ const TodoApp = () => {
           actionDone={actionDone}
           actionEdit={actionEdit}
         />
-      </body>
       <footer></footer>
     </>
   );

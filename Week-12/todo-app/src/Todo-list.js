@@ -17,6 +17,7 @@ const TodoList = ({ todoListData, actionRemove, actionDone, actionEdit }) => {
         {todoListData.map((e) => (
           <TodoCard
             values={e}
+            key={e.id}
             removeNote={removeNote}
             doneNote={doneNote}
             editNote={editNote}

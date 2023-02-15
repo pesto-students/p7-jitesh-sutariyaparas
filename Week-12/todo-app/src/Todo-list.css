@@ -28,3 +28,6 @@ card-btn {
 .card-remove-btn {
   color: red;
 }
+.note-status{
+    float:right
+}
