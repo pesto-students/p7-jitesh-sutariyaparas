@@ -1,3 +1,5 @@
+
+
 .todo-box {
   position: fixed;
   width: 100%;
@@ -12,10 +14,37 @@
 
 .todo-form {
   position: absolute;
-  left: 25%;
-  right: 25%;
-  top: 25%;
-  bottom: 25%;
+  left: 20%;
+  right: 20%;
+  top: 10%;
+  bottom: 20%;
   margin: auto;
   background: white;
+  border-radius: 10px;
+  padding: 20px;
 }
+
+.close-button {
+  float: right;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+label {
+  position: absolute;
+  top: -13px;
+  left: 10px;
+  background-color: white;
+  padding: 0 5px;
+}
+input[type="text"],
+textarea {
+  width: 90%;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  border-color: lightblue;
+}
+
