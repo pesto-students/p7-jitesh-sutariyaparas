@@ -16,36 +16,36 @@ const TodoCard = ({ values, removeNote, doneNote, editNote }) => {
     <>
       <div className="todo-card">
         <div>
-          {values.status === 'Draft'?<span Style="float:right" className="badge progress-bar-warning">
-            {values.status}
-          </span>:<span Style="float:right" className="badge progress-bar-success">
-            {values.status}
-          </span>}
-          
+          {values.status === "Draft" ? (
+            <span Style="float:right" className="badge progress-bar-warning">
+              {values.status}
+            </span>
+          ) : (
+            <span Style="float:right" className="badge progress-bar-success">
+              {values.status}
+            </span>
+          )}
+
           <span>
             <h4>{values.name}</h4>
           </span>
         </div>
         <div> Description:{values.description}</div>
 
-        <div class="btn btn-primary btn-sm">
-          <i Style="font-size:14px;" class="fas fa-edit" onClick={editCard}>
-            {" "}
+        <div class="btn card-edit-btn card-btn">
+          <i class="fas fa-edit" onClick={editCard}>
             Edit
           </i>
         </div>
 
-        <div class="btn btn-success btn-sm">
-          <i Style="font-size:14px;" class="fas fa-check" onClick={doneCard}>
-            {" "}
+        <div class="btn card-approve-btn card-btn">
+          <i class="fas fa-check" onClick={doneCard}>
             Approve
           </i>
         </div>
-
-        <div class="btn btn-danger btn-sm">
-          <i Style="font-size:14px;" class="fas fa-trash" onClick={removeCard}>
-            {" "}
-            Delete
+        <div class="btn card-remove-btn card-btn">
+          <i class="fas fa-trash" onClick={removeCard}>
+            Remove
           </i>
         </div>
       </div>

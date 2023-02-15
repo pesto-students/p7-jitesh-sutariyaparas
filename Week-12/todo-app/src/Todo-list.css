@@ -1,15 +1,30 @@
-
-
-.todo-card{
-    background-color: lightblue;
-    padding: 1%;
-    border-radius: 10px;
-    margin: 5PX;
+.todo-card {
+  background-color: lightblue;
+  padding: 3%;
+  border-radius: 10px;
+  margin: 5px;
 }
 
-.card-list{
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-bottom: 5%;
-    padding-top: 2%;
+.card-list {
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  padding-top: 2%;
+}
+
+card-btn {
+  font-size: 15px;
+  padding: 0px;
+}
+
+.card-edit-btn {
+  color: blue;
+}
+
+.card-approve-btn {
+  color: green;
+}
+
+.card-remove-btn {
+  color: red;
 }
