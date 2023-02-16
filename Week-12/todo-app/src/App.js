@@ -1,24 +1,23 @@
 import "./App.css";
 import TodoForm from "./components/TodoForm/Todo-form.js";
 import TodoList from "./components/TodoList/Todo-list.js";
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 
 const TodoApp = () => {
   const [todoListData, setTodoListData] = useState([]);
   const [ShowForm, setShowForm] = useState(false);
   const [FormValues, setFormValues] = useState({});
   const [NoteCount, setNoteCount] = useState(0);
-
-  useEffect(() => {
-    setNoteCount(todoListData.length);
-  }, [todoListData]);
+  const [NoteSequence, setNoteSequence] = useState(1);
 
   const createNote = (values) => {
     const list = todoListData;
-    values["id"] = todoListData.length + 1;
+    values["id"] = NoteSequence;
     values["status"] = "Pending";
     list.push(values);
+    setNoteSequence(NoteSequence+1)
     setTodoListData([...list]);
+    setNoteCount(todoListData.length)
     closeTodoForm();
   };
   const actionRemove = (values) => {
@@ -27,6 +26,7 @@ const TodoApp = () => {
         const list = todoListData;
         list.splice(index, 1);
         setTodoListData([...list]);
+        setNoteCount(todoListData.length)
         return;
       }
     });

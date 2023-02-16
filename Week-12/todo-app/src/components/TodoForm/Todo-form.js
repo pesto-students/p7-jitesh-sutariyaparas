@@ -1,7 +1,5 @@
 import "./Todo-form.css";
 import React, { useState } from "react";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faTimes  } from '@fortawesome/free-solid-svg-icons';
 
 const TodoForm = ({ createNote, closeTodoForm, values, actionUpdate }) => {
   const [name, setName] = useState(values.name);
