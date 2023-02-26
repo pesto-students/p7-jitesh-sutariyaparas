@@ -7,7 +7,7 @@ const getApiCall = async (endPoint = "", params = {}, data = {}) => {
   // API doc ref :https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
   // https://shrtco.de/docs/
   const response = await fetch(apiUrl, {
-    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    method: "GET", // *GET, POST, PUT, DELETE, etc.
   });
   if (!response.ok) {
     throw new Error("Something wrong while generating short link");
