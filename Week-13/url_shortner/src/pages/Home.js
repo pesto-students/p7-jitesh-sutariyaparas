@@ -1,21 +1,32 @@
 import { useState } from "react";
 import { getApiCall } from "../ApiManager.js";
+import ListUrl from "../components/ListUrl";
 
 const Home = () => {
   console.log("HOME PAGE LOAD");
 
   const [urlToShort, setUrlToShort] = useState("");
-  const [urlList, setUrlList] = useState([{ name: "paras" }]);
+  const [urlList, setUrlList] = useState([{ fullUrl: "", shortUrl: "" }]);
+
+  const updateListUrl = (apiResponse) => {
+    if (apiResponse.ok) {
+      const list = urlList;
+      list.push({
+        key: 1,
+        fullUrl: apiResponse.result.original_link,
+        shortUrl: apiResponse.result.short_link,
+      });
+      setUrlList([...list]);
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const list = urlList;
-    list.push({ id: 1, url: urlToShort, shortUrl: "" });
-    setUrlList([...list]);
 
     getApiCall("shorten", { url: urlToShort })
       .then((res) => {
         console.log("API CALL response", res);
+        updateListUrl(res);
       })
       .catch((e) => {
         console.log(e.message);
@@ -34,7 +45,7 @@ const Home = () => {
         ></input>
         <button>Submit</button>
       </form>
-      {/* <div>{urlList.toString()}</div> */}
+      <ListUrl urlList={urlList}></ListUrl>
     </div>
   );
 };
