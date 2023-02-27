@@ -1,22 +1,26 @@
 import React, { useState } from "react";
 import { getApiCall } from "../../ApiManager";
 import ListUrl from "../../components/ListUrl";
+import "./home.css";
 
 function HomePage() {
   console.log("HOME PAGE LOAD");
 
   const [urlToShort, setUrlToShort] = useState("");
-  const [urlList, setUrlList] = useState([{ fullUrl: "", shortUrl: "" }]);
+  const [urlList, setUrlList] = useState([]);
 
   const updateListUrl = (apiResponse) => {
     if (apiResponse.ok) {
       const list = urlList;
-      list.push({
-        key: 1,
-        fullUrl: apiResponse.result.original_link,
-        shortUrl: apiResponse.result.short_link,
-      });
-      setUrlList([...list]);
+      if (apiResponse.result) {
+        list.push({
+          id: apiResponse.result.code,
+          fullUrl: apiResponse.result.original_link,
+          shortUrl: apiResponse.result.short_link,
+        });
+        console.log();
+        setUrlList([...list]);
+      }
     }
   };
 
@@ -26,6 +30,7 @@ function HomePage() {
     getApiCall("shorten", { url: urlToShort })
       .then((res) => {
         updateListUrl(res);
+        setUrlToShort("");
       })
       .catch((e) => {
         alert(e.message);
@@ -34,16 +39,17 @@ function HomePage() {
   };
 
   return (
-    <div>
-      <h1>Home Page</h1>
-      <p>Welcome to my website!</p>
-
-      <form onSubmit={handleSubmit}>
+    <div className="home-page">
+      <h1>Short URL</h1>
+      <p>Paste the URL to be shortened</p>
+      <p>ShortURL is a free service to shorten URLs and create short links</p>
+      <form className="url-form" onSubmit={handleSubmit}>
         <input
           id="name"
           type="text"
           value={urlToShort}
           onChange={(e) => setUrlToShort(e.target.value)}
+          placeholder="www.example.com"
         ></input>
         <button>Submit</button>
       </form>
