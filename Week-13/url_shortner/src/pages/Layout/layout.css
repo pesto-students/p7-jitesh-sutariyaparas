@@ -3,10 +3,19 @@ li {
   padding: 20px;
 }
 .nav-header{
-    background-color: lightblue;
+    background-color: rgb(62, 63, 63);
     display: flex;
     /* justify-content:flex-start; */
     padding-left: 0px;
+    border-radius: 5px
 }
 
-
+nav > ul > li > a{
+  
+  color: rgb(186, 61, 12);
+}
+nav > ul > li > a:focus {
+  color: white;
+  /* background-color: transparent;
+  text-decoration: underline; */
+}
