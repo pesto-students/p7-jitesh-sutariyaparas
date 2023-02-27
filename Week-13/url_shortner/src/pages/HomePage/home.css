@@ -1,5 +1,6 @@
 .home-page {
-  padding: 4%;
+  
+  min-height: 64vh;
 }
 
 .url-form {
@@ -32,11 +33,3 @@ form {
     border-radius: 5px;
     cursor: pointer;
   }
-
-/* input[type="text"] {
-  width: 100%;
-  border: 1px solid black;
-  padding: 10px;
-  border-radius: 5px;
-  border-color: lightblue;
-} */
