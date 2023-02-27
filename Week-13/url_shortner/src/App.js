@@ -1,22 +1,25 @@
+// import logo from './logo.svg';
 import "./App.css";
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-// import NoPage from "./pages/NoPage";
-import Navbar from "./components/Navbar";
+// import Navigation from "./components/Navigation";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import ContactPage from "./pages/ContactPage";
+import AboutPage from "./pages/AboutPage";
+import Layout from "./pages/Layout";
+// import Footer from "./components/Footer";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
+    <BrowserRouter>
       <Routes>
-        <Route exact path="/" exact element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          {/* <Route path="*" element={<NoPage />} /> */}
+        </Route>
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 

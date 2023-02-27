@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { getApiCall } from "../ApiManager.js";
-import ListUrl from "../components/ListUrl";
+import React, { useState } from "react";
+import { getApiCall } from "../../ApiManager";
+import ListUrl from "../../components/ListUrl";
 
-const Home = () => {
+function HomePage() {
   console.log("HOME PAGE LOAD");
 
   const [urlToShort, setUrlToShort] = useState("");
@@ -25,17 +25,19 @@ const Home = () => {
 
     getApiCall("shorten", { url: urlToShort })
       .then((res) => {
-        console.log("API CALL response", res);
         updateListUrl(res);
       })
       .catch((e) => {
+        alert(e.message);
         console.log(e.message);
       });
   };
 
   return (
-    <div className="App">
-      <div>HOME PAGE</div>
+    <div>
+      <h1>Home Page</h1>
+      <p>Welcome to my website!</p>
+
       <form onSubmit={handleSubmit}>
         <input
           id="name"
@@ -48,6 +50,6 @@ const Home = () => {
       <ListUrl urlList={urlList}></ListUrl>
     </div>
   );
-};
+}
 
-export default Home;
+export default HomePage;
