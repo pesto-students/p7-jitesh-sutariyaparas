@@ -4,9 +4,9 @@ import "./list_url.css";
 const ListUrl = ({ urlList }) => {
   const listItems = urlList.map((list) => (
     <div className="url-card" key={list.id}>
-      <div>{list.fullUrl}</div>
+      <div><strong>URL:</strong> {list.fullUrl}</div>
       <div>
-        <span>{list.shortUrl}</span>
+        <span><strong>Short URL:</strong> {list.shortUrl}</span>
         <span>
           <div className="btn card-edit-btn card-btn">
             <i
@@ -14,7 +14,7 @@ const ListUrl = ({ urlList }) => {
               onClick={() => {
                 navigator.clipboard.writeText(list.shortUrl);
               }}
-            ></i>
+            > Copy</i>
           </div>
         </span>
       </div>

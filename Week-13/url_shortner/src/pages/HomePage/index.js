@@ -4,8 +4,6 @@ import ListUrl from "../../components/ListUrl";
 import "./home.css";
 
 function HomePage() {
-  console.log("HOME PAGE LOAD");
-
   const [urlToShort, setUrlToShort] = useState("");
   const [urlList, setUrlList] = useState([]);
 
@@ -18,7 +16,6 @@ function HomePage() {
           fullUrl: apiResponse.result.original_link,
           shortUrl: apiResponse.result.short_link,
         });
-        console.log();
         setUrlList([...list]);
       }
     }
@@ -26,7 +23,6 @@ function HomePage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     getApiCall("shorten", { url: urlToShort })
       .then((res) => {
         updateListUrl(res);
@@ -34,7 +30,7 @@ function HomePage() {
       })
       .catch((e) => {
         alert(e.message);
-        console.log(e.message);
+        console.log("Error message while API call", e.message);
       });
   };
 
@@ -44,6 +40,15 @@ function HomePage() {
       <p>Paste the URL to be shortened</p>
       <p>ShortURL is a free service to shorten URLs and create short links</p>
       <form className="url-form" onSubmit={handleSubmit}>
+        <div
+          className="btn btn-link-paste"
+          onClick={async () => {
+            const text = await navigator.clipboard.readText();
+            setUrlToShort(text);
+          }}
+        >
+          <i className="fas fa-paste"> Paste</i>
+        </div>
         <input
           id="name"
           type="text"
@@ -51,7 +56,7 @@ function HomePage() {
           onChange={(e) => setUrlToShort(e.target.value)}
           placeholder="www.example.com"
         ></input>
-        <button>Submit</button>
+        <button>Generate</button>
       </form>
       <ListUrl urlList={urlList}></ListUrl>
     </div>
