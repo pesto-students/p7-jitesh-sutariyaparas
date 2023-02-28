@@ -7,37 +7,45 @@ const Layout = () => {
 
   return (
     <>
-      <nav>
-        <ul className="nav-header">
-          <li>
-            <Link
-              className={location.pathname === "/" ? "nav-active" : ""}
-              to="/"
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={location.pathname === "/about" ? "nav-active" : ""}
-              to="/about"
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={location.pathname === "/contact" ? "nav-active" : ""}
-              to="/contact"
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <div className="app-layout">
+        <div>
+          <nav>
+            <ul className="nav-header">
+              <li>
+                <Link
+                  className={location.pathname === "/" ? "nav-active" : ""}
+                  to="/"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={location.pathname === "/about" ? "nav-active" : ""}
+                  to="/about"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={
+                    location.pathname === "/contact" ? "nav-active" : ""
+                  }
+                  to="/contact"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </nav>
 
-      <Outlet />
-      <Footer />
+          <Outlet />
+        </div>
+        <div>
+          <Footer />
+        </div>
+      </div>
     </>
   );
 };
