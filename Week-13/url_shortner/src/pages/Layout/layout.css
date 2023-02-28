@@ -5,17 +5,21 @@ li {
 .nav-header {
   background-color: rgb(62, 63, 63);
   display: flex;
-  /* justify-content:flex-start; */
+  justify-content: flex-center;
   padding-left: 0px;
   border-radius: 5px;
 }
 
 nav > ul > li > a {
-  color: rgb(186, 61, 12);
-}
-nav > ul > li > a:focus,
-a:hover {
   color: white;
-  /* background-color: transparent;
-  text-decoration: underline; */
+}
+
+nav > ul > li > a:hover,
+a:focus {
+  color: yellow;
+  text-decoration: none;
+}
+
+.nav-active {
+  color: yellow;
 }
