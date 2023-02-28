@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Application for Generate URL Short link 
+<img src="./public/home_page.png" width="auto" height="auto" />
+
+<br>
+<img src="./public/home_page2.png" width="auto" height="auto" />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
