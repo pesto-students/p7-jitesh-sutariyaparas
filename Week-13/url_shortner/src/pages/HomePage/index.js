@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { getApiCall } from "../../ApiManager";
 import ListUrl from "../../components/ListUrl";
 import "./home.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function HomePage() {
   const [urlToShort, setUrlToShort] = useState("");
