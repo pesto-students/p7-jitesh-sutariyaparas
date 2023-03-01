@@ -1,0 +1,10 @@
+.url-card{
+    border-radius: 10px;
+    background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+    padding: 2%;
+    margin-top: 1%;
+}
+
+.card-edit-btn{
+    margin-top: -5px;
+}
