@@ -1,5 +1,5 @@
 show databases;
-create database Warehouse;
+create database warehouse;
 use warehouse;
 
 -- EVERY Table have id colume with PRIMARY KEY and auto increment 
@@ -11,56 +11,56 @@ use warehouse;
 
 
 -- (1) CITY TABLE CREATION
-create table CITIES(
-    id int NOT NULL AUTO_INCREMENT, 
+create table city(
+    city_id int NOT NULL AUTO_INCREMENT, 
     name CHAR(20), 
     state CHAR(20),
     PRIMARY KEY (id)
 );
 
 -- (2) Warehouse table creation
-create table WAREHOUSES(
-    id int NOT NULL AUTO_INCREMENT,
+create table warehouse(
+    warehouse_id int NOT NULL AUTO_INCREMENT,
     name CHAR(30),
     city_id int,
     EXTRACONTEXT json,
 	PRIMARY KEY (id),
-    FOREIGN KEY (city_id) REFERENCES cities(id)
+    FOREIGN KEY (city_id) REFERENCES city(city_id)
 );
 
 -- (3) Store Table creation  
-create table STORES(
-    id int NOT NULL AUTO_INCREMENT,
+create table store(
+    store_id int NOT NULL AUTO_INCREMENT,
     name CHAR(20), 
     warehouse_id int,
     city_id int,
     PRIMARY KEY (id),
-    FOREIGN KEY (city_id) REFERENCES cities(id),
-    FOREIGN KEY (warehouse_id) REFERENCES warehouses(id)
+    FOREIGN KEY (city_id) REFERENCES city(city_id),
+    FOREIGN KEY (warehouse_id) REFERENCES warehouse(warehouse_id)
 );
 
 -- (4) Customer table Creation
-create table CUSTOMER(
-    id int NOT NULL AUTO_INCREMENT,
+create table customer(
+    customer_id int NOT NULL AUTO_INCREMENT,
     name CHAR(50),
     address VARCHAR(50),
     city_id int,
     PRIMARY KEY (id),
-    FOREIGN KEY (city_id) REFERENCES cities(id)
+    FOREIGN KEY (city_id) REFERENCES city(city_id)
 );
 
 -- (5) Order table creation
-create table ORDERS(
-    id int NOT NULL AUTO_INCREMENT,
+create table sale_order(
+    order_id int NOT NULL AUTO_INCREMENT,
     order_date DATE,
     customer_id int,
     PRIMARY KEY (id),
-    FOREIGN KEY (customer_id) REFERENCES CUSTOMER(id)
+    FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
 );
 
 -- (6) Items/Product table creation 
 create table ITEMS(
-    id int NOT NULL AUTO_INCREMENT,
+    item_id int NOT NULL AUTO_INCREMENT,
     name char(50),
     sku char(20),
     DESCRIPTION TEXT,
@@ -70,20 +70,16 @@ create table ITEMS(
 );
 
 -- (7) Order Items table craete to maintain Many 2 many relation between order and items/product table
-create table ORDER_ITEMS(
-    id int NOT NULL AUTO_INCREMENT,
+create table sale_order_item(
+    sale_order_item_id int NOT NULL AUTO_INCREMENT,
     order_date DATE,
     order_id int,
     item_id int,
     Quantity DECIMAL(5,2),
     PRIMARY KEY (id),
-    FOREIGN KEY (order_id) REFERENCES ORDERS(id),
-    FOREIGN KEY (item_id) REFERENCES ITEMS(id)
+    FOREIGN KEY (order_id) REFERENCES sale_order(order_id),
+    FOREIGN KEY (item_id) REFERENCES item(item_id)
 );
-
-
-
-
  
  
 
