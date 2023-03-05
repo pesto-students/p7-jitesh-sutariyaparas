@@ -22,7 +22,7 @@ select * from customer;
 
 -- Order Record Insert
 insert into sale_order (order_date,customer_id) values ('2023-03-05',1),('2023-03-06',2);
-insert into orders (order_date,customer_id) values('2023-03-07',1),('2023-03-08',3);
+insert into sale_order (order_date,customer_id) values('2023-03-07',1),('2023-03-08',3);
 select * from sale_order;
 
 -- Items/Product Recod Insert
@@ -39,23 +39,24 @@ select * from sale_order_item;
 
 -- ---------------------------------------------
 -- Assignemnt Problems 
--- (1) Find the item that has minimum weight.
+-- (1) Find the item that has minimum weight. DONE
 select * from item where weight=(select max(weight) from item);
 
--- (2) Find the different warehouses in “Pune”.
+-- (2) Find the different warehouses in “Pune”. DONE
 select * from warehouse where city_id=(select city_id from city where name='Pune');
 
--- (3) Find the details of items ordered by a customer “Mr. Patil”
-select * from sale_order_item where order_id=(select id from sale_order where customer_id=(select customer_id from customer where name='Mr. Patil'));
+-- (3) Find the details of items ordered by a customer “Mr. Patil” DONE
+select * from sale_order_item where order_id=(select order_id from sale_order where customer_id=(select customer_id from customer where name='Mr. Patil'));
 
--- (4) Find a Warehouse which has maximum stores
+-- (4) Find a Warehouse which has maximum stores DONE
 select * from store;
 select	count(*), warehouse_id from store group by warehouse_id;
 select * from warehouse;
-select	count(*) as store_count, s.warehouse_id, w.name as WarehouseName from store as s left join warehouse as w on s.warehouse_id= w.id  group by warehouse_id order by store_count desc limit 1;
+-- FINAL QUERY OUTPUT
+select	count(*) as store_count, s.warehouse_id, w.name as WarehouseName from store as s left join warehouse as w on s.warehouse_id= w.warehouse_id  group by warehouse_id order by store_count desc limit 1;
 
--- (5) Find an item which is ordered for a minimum number of times
-select sum(quantity), items.item_id, items.name from sale_order_item left join items on sale_order_item.item_id=item.item_id group by item.id limit 1 ;
+-- (5) Find an item which is ordered for a minimum number of times DONE
+select sum(quantity), item.item_id, item.name from sale_order_item left join item on sale_order_item.item_id=item.item_id group by item.item_id limit 1 ;
 
 -- (6) Find the detailed orders given by each customer
 select * from
@@ -67,10 +68,6 @@ on oi.item_id=i.item_id
 left join customer as c
 on o.customer_id=c.customer_id
  -- where c.name='Mr. Patil';
-
-
-
- 
  
 
 
