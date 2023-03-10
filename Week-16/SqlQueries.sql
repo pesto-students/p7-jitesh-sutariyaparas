@@ -40,7 +40,10 @@ select * from sale_order_item;
 -- ---------------------------------------------
 -- Assignemnt Problems 
 -- (1) Find the item that has minimum weight. DONE
-select * from item where weight=(select max(weight) from item);
+-- method 1
+select * from item order by weight limit 1;
+-- method 2
+select * from item where weight=(select min(weight) from item);
 
 -- (2) Find the different warehouses in “Pune”. DONE
 select * from warehouse where city_id=(select city_id from city where name='Pune');
@@ -49,11 +52,12 @@ select * from warehouse where city_id=(select city_id from city where name='Pune
 select * from sale_order_item where order_id=(select order_id from sale_order where customer_id=(select customer_id from customer where name='Mr. Patil'));
 
 -- (4) Find a Warehouse which has maximum stores DONE
-select * from store;
-select	count(*), warehouse_id from store group by warehouse_id;
-select * from warehouse;
+-- select * from store;
+-- select	count(*), warehouse_id from store group by warehouse_id;
+-- select * from warehouse;
 -- FINAL QUERY OUTPUT
 select	count(*) as store_count, s.warehouse_id, w.name as WarehouseName from store as s left join warehouse as w on s.warehouse_id= w.warehouse_id  group by warehouse_id order by store_count desc limit 1;
+
 
 -- (5) Find an item which is ordered for a minimum number of times DONE
 select sum(quantity), item.item_id, item.name from sale_order_item left join item on sale_order_item.item_id=item.item_id group by item.item_id limit 1 ;
