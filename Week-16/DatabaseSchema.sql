@@ -80,11 +80,3 @@ create table sale_order_item(
     FOREIGN KEY (order_id) REFERENCES sale_order(order_id),
     FOREIGN KEY (item_id) REFERENCES item(item_id)
 );
- 
-
-
-
-
-
-
-
