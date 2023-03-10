@@ -81,7 +81,6 @@ create table sale_order_item(
     FOREIGN KEY (item_id) REFERENCES item(item_id)
 );
  
- 
 
 
 

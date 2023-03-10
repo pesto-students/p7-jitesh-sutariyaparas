@@ -72,11 +72,3 @@ on oi.item_id=i.item_id
 left join customer as c
 on o.customer_id=c.customer_id
  -- where c.name='Mr. Patil';
- 
-
-
-
-
-
-
-
