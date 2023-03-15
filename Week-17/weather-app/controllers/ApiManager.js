@@ -1,9 +1,9 @@
-const WeatherApiKey = de21d72d3d2e4a54a9e102925231403;
+const WeatherApiKey = process.env.OPEN_WEATHER_API_KEY;
 
-const apiBaseUrl = "http://api.weatherapi.com/v1/";
+const apiBaseUrl = process.env.OPEN_WEATHER_API_BASE_URL;
 
 const getApiCall = async (endPoint = "", params = {}, data = {}) => {
-  params["key"] = WeatherApiKey;
+  params["appid"] = WeatherApiKey;
   let apiUrl = new URL(endPoint, apiBaseUrl);
   apiUrl.search = new URLSearchParams(params).toString();
   apiUrl = apiUrl.toJSON();
@@ -27,11 +27,11 @@ const postApiCall = async (endPoint = "", params = {}, data = {}) => {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
   });
   if (!response.ok) {
-    alert("something went wrong please try again or check input URL");
+    alert("something went wrong please try again");
     throw new Error("Something wrong while generating short link");
   } else {
     return response.json();
   }
 };
 
-export { getApiCall, postApiCall };
+module.exports = { getApiCall, postApiCall };
