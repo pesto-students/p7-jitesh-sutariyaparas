@@ -8,6 +8,7 @@ require("dotenv").config();
 app.use(express.json());
 
 app.use("/v1", require("./routes/weather.route"));
+app.use("/v1", require("./routes/forecast.route"));
 
 app.use(function (req, res) {
   res.status(404).json("err: Page not found");

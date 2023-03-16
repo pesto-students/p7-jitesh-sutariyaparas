@@ -13,7 +13,9 @@ const getApiCall = async (endPoint = "", params = {}, data = {}) => {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
   });
   if (!response.ok) {
-    throw new Error("Something wrong while generating short link");
+    // throw new Error("Something wrong while generating short link");
+    console.log("Error: Something wrong while generating short link")
+    return response.json()
   } else {
     return response.json();
   }
