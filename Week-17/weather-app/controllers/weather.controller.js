@@ -18,9 +18,9 @@ const currentWeatherMultiCity = async (req, res) => {
     let weatherData = [];
     let cityChunk = [];
     let page = req.query.page || 1;
-    let cityList = req.query.city_list;
+    let cityList = req.query.cities;
     if (cityList) {
-      let cityList = [...req.query.city_list.split(",")];
+      cityList = [...cityList.split(",")];
       for (let i = 0; i < cityList.length; i += chunkSize) {
         const chunk = cityList.slice(i, i + chunkSize);
         cityChunk.push(chunk);
