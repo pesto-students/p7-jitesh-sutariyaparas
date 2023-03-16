@@ -3,7 +3,7 @@ const app = express();
 const PORT = 3005;
 
 require("dotenv").config();
-console.log(process.env.WEATHER_API_KEY);
+// console.log(process.env.WEATHER_API_KEY);
 
 app.use(express.json());
 
