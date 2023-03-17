@@ -1,21 +1,35 @@
-const WeatherApiKey = process.env.OPEN_WEATHER_API_KEY;
+const openWeatherApiKey = process.env.OPEN_WEATHER_API_KEY;
+const openWeatherBaseUrl = process.env.OPEN_WEATHER_API_BASE_URL;
 
-const apiBaseUrl = process.env.OPEN_WEATHER_API_BASE_URL;
+const WeatherApiKey = process.env.WEATHER_API_KEY;
+const WeatherBaseUrl = process.env.WEATHER_API_BASE_URL;
 
-const getApiCall = async (endPoint = "", params = {}, data = {}) => {
-  params["appid"] = WeatherApiKey;
-  let apiUrl = new URL(endPoint, apiBaseUrl);
+const getApiCall = async (
+  endPoint = "",
+  params = {},
+  data = {},
+  apiService
+) => {
+  let baseUrl = "";
+  if (apiService == "open_weather_api") {
+    console.log("IF PART", apiService, openWeatherBaseUrl);
+    params["appid"] = openWeatherApiKey;
+    baseUrl = openWeatherBaseUrl;
+  } else {
+    params["key"] = WeatherApiKey;
+    baseUrl = WeatherBaseUrl;
+  }
+  let apiUrl = new URL(endPoint, baseUrl);
   apiUrl.search = new URLSearchParams(params).toString();
   apiUrl = apiUrl.toJSON();
   // API doc ref :https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-  // https://shrtco.de/docs/
   const response = await fetch(apiUrl, {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
   });
   if (!response.ok) {
     // throw new Error("Something wrong while generating short link");
-    console.log("Error: Something wrong while generating short link")
-    return response.json()
+    console.log("Error: Something wrong while generating short link");
+    return response.json();
   } else {
     return response.json();
   }

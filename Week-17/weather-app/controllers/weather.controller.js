@@ -5,7 +5,12 @@ const apiService = require("./ApiManager");
 const currentWeather = async (req, res) => {
   try {
     query = { q: req.query.city };
-    data = await apiService.getApiCall("2.5/weather", query);
+    data = await apiService.getApiCall(
+      "data/2.5/weather",
+      query,
+      (data = {}),
+      "open_weather_api"
+    );
     res.json(data);
   } catch (err) {
     console.log(err);
@@ -28,7 +33,12 @@ const currentWeatherMultiCity = async (req, res) => {
       if (page - 1 < cityChunk.length && page > 0) {
         for (city of cityChunk[page - 1]) {
           query = { q: city };
-          data = await apiService.getApiCall("2.5/weather", query);
+          data = await apiService.getApiCall(
+            "data/2.5/weather",
+            query,
+            (data = {}),
+            "open_weather_api"
+          );
           weatherData.push(data);
         }
       }
