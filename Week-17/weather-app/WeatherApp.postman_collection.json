@@ -36,7 +36,30 @@
 			"name": "Current Weather Multy city",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/current_weather_multi_city?cities=surat,mumbai,pune,delhi,Jaypur&page=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"current_weather_multi_city"
+					],
+					"query": [
+						{
+							"key": "cities",
+							"value": "surat,mumbai,pune,delhi,Jaypur"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -46,7 +69,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/v1/api/daily_forecast?city=Pune",
+					"raw": "http://localhost:3005/v1/api/daily_forecast?city=Pune&days=7",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -61,6 +84,10 @@
 						{
 							"key": "city",
 							"value": "Pune"
+						},
+						{
+							"key": "days",
+							"value": "7"
 						}
 					]
 				}
@@ -73,7 +100,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/v1/api/daily_forecast_multi_city?cities=surat,mumbai,pune,delhi,Jaypur&page=1",
+					"raw": "http://localhost:3005/v1/api/daily_forecast_multi_city?cities=surat,mumbai,pune,delhi,Jaypur&page=1&days=3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -92,6 +119,10 @@
 						{
 							"key": "page",
 							"value": "1"
+						},
+						{
+							"key": "days",
+							"value": "3"
 						}
 					]
 				}
