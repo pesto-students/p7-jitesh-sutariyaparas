@@ -41,6 +41,33 @@
 			"response": []
 		},
 		{
+			"name": "Daily Forecast Single City",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/daily_forecast?city=Pune",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"daily_forecast"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Pune"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Daily Forecast Multi City",
 			"request": {
 				"method": "GET",
@@ -65,33 +92,6 @@
 						{
 							"key": "page",
 							"value": "1"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Daily Forecast Single City",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3005/v1/api/daily_forecast?city=Pune",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"v1",
-						"api",
-						"daily_forecast"
-					],
-					"query": [
-						{
-							"key": "city",
-							"value": "Pune"
 						}
 					]
 				}
