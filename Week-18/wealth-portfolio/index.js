@@ -9,6 +9,8 @@ const PORT = 3005;
 connectDB();
 
 app.use(express.json());
+app.use('/v1',require('./routes/user.route'))
+
 
 app.use(function (req, res) {
   res.status(404).json("err: Page not found");
