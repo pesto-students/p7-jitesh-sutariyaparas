@@ -8,7 +8,7 @@ const dailyForecast = async (req, res) => {
     let days = req.query.days || 3;
     query = { q: req.query.city, days: Number(days) };
     data = await apiService.getApiCall(
-      "forecast.json",
+      "v1/forecast.json",
       // "2.5/forecast/daily",
       query,
       (data = {}),
@@ -39,7 +39,7 @@ const dailyForecastMultiCity = async (req, res) => {
         for (city of cityChunk[page - 1]) {
           query = { q: city, cnt: Number(days) };
           data = await apiService.getApiCall(
-            "forecast.json",
+            "v1/forecast.json",
             // "2.5/forecast/daily",
             query,
             "weather_api"
