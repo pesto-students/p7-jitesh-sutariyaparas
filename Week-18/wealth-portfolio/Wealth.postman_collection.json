@@ -1,61 +1,48 @@
 {
-	"info": {
-		"_postman_id": "49f84f8a-84ab-46e2-bdcf-374ab7879e05",
-		"name": "Wealth",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "User Login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3005/v1/api/user/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"v1",
-						"api",
-						"user",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create User",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n   \"firstname\":\"Paras\",\r\n   \"lastname\":\"Sutariya\",\r\n   \"email\":\"paras.sutariya125@gmail.com\",\r\n   \"password\":\"123456\"\r\n\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3005/v1/api/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3005",
-					"path": [
-						"v1",
-						"api",
-						"users"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "49f84f8a-84ab-46e2-bdcf-374ab7879e05",
+    "name": "Wealth",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3005/v1/api/user/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3005",
+          "path": ["v1", "api", "user", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"firstname\":\"Paras\",\r\n   \"lastname\":\"Sutariya\",\r\n   \"email\":\"paras.sutariya125@gmail.com\",\r\n   \"password\":\"123456\"\r\n\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3005/v1/api/users",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3005",
+          "path": ["v1", "api", "users"]
+        }
+      },
+      "response": []
+    }
+  ]
 }
