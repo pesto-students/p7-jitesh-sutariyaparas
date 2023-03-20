@@ -1,8 +1,4 @@
-const ObjectId = require("mongoose").Types.ObjectId;
-// const userAggretaion = require("../aggregation/lead.aggregation");
 const User = require("../models/user.model");
-// const AWS = require("aws-sdk");
-// const uuid = require("uuid").v4;
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -16,9 +12,19 @@ const getUsers = async (req, res) => {
   }
 };
 
+const getUserById = async (req, res) => {
+  console.log("GET USER BY ID");
+  try {
+    const user = await User.findById(req.param.id);
+    res.json(user);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const createUser = async (req, res) => {
   try {
-    console.log("req.body__", req.body);
+    console.log("Register new user", req.body);
     const users = await User.findOne({ email: req.body.email });
     if (users) {
       return res.json({
@@ -34,12 +40,11 @@ const createUser = async (req, res) => {
 };
 
 const login = async (req, res) => {
+  console.log("User login");
   const { email, password } = req.body;
-  console.log("__",email,password)
   try {
     const user = await User.findOne({ email });
     if (user) {
-      console.log("user.password__", password, user.password);
       const isMatch = await bcrypt.compare(password, user.password);
       if (isMatch) {
         console.log(user);
@@ -68,6 +73,7 @@ const login = async (req, res) => {
 
 module.exports = {
   getUsers,
+  getUserById,
   createUser,
   login,
 };
