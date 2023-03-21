@@ -19,6 +19,7 @@ const IncomeSchema = new Schema({
   notes: {
     type: String,
   },
+  userId: String
 });
 
 module.exports = mongoose.model("Income", IncomeSchema);

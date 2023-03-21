@@ -15,17 +15,8 @@ const UserSchema = new Schema({
   password: {
     type: String,
   },
-  countryCode: {
-    type: String,
-  },
   phone: {
     type: Number,
-  },
-  role: {
-    type: String,
-  },
-  companyId: {
-    type: String,
   },
 });
 

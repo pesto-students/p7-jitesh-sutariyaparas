@@ -19,6 +19,7 @@ const SavingSchema = new Schema({
   notes: {
     type: String,
   },
+  userId: String
 });
 
 module.exports = mongoose.model("Saving", SavingSchema);
