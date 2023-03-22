@@ -15,7 +15,7 @@ const getUsers = async (req, res) => {
 const getUserById = async (req, res) => {
   console.log("GET USER BY ID");
   try {
-    const user = await User.findById(req.param.id);
+    const user = await User.findById(req.params.id);
     res.json(user);
   } catch (err) {
     console.log(err);
@@ -23,6 +23,7 @@ const getUserById = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
+  console.log("USER SignUp");
   try {
     console.log("Register new user", req.body);
     const users = await User.findOne({ email: req.body.email });
@@ -67,13 +68,35 @@ const login = async (req, res) => {
       res.json("User does not exist");
     }
   } catch (e) {
+    console.log(e);
+  }
+};
+
+const updateUser = async (req, res) => {
+  console.log("Use Update");
+  try {
+    const user = await User.updateOne(
+      { _id: req.params.id },
+      { firstname: req.body.firstname, lastname: req.body.lastname }
+    );
+    res.json(user);
+  } catch (err) {
     console.log(err);
   }
 };
 
+const deleteUser = (req, res) => {
+  console.log("Use delete");
+  User.deleteOne({ _id: req.params.id }).then((result) => {
+    res.json(result);
+  });
+};
+
 module.exports = {
-  getUsers,
-  getUserById,
   createUser,
   login,
+  getUsers,
+  getUserById,
+  updateUser,
+  deleteUser,
 };
