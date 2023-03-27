@@ -7,7 +7,7 @@ const authMiddleware = require("../middleware/auth");
 
 
 // Asset Routes
-router.get("/api/assets", authMiddleware, assetController.getAllAssets);  //select
+router.get("/api/assets/user/:user_id", authMiddleware, assetController.getAllAssets);  //select
 router.get("/api/assets/:id", authMiddleware, assetController.getAssetById); //select
 router.post("/api/assets/:user_id", authMiddleware, assetController.createAsset); //insert
 router.put("/api/assets/:id", authMiddleware, assetController.updateAsset); //update

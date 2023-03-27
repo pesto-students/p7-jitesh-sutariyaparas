@@ -26,7 +26,7 @@ const AssetSchema = new Schema({
   notes: {
     type: String,
   },
-  userId: String
+  user_id: String
 });
 
 module.exports = mongoose.model("Asset", AssetSchema);

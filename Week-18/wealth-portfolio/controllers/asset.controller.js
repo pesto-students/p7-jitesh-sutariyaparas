@@ -2,9 +2,9 @@ const Asset = require("../models/asset.model");
 
 
 const getAllAssets = async (req, res) => {
-  console.log("GET All Asset");
+  console.log("GET All Asset..");
   try {
-    const asset = await Asset.find();
+    const asset = await Asset.find({"user_id":req.params.user_id});
     res.json(asset);
   } catch (err) {
     console.log(err);
