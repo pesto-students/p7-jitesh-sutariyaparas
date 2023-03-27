@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Users = require("../models/user.model");
 
 const Schema = mongoose.Schema;
 
@@ -14,10 +15,10 @@ const AssetSchema = new Schema({
     type: Date,
   },
   purchase_price: {
-    type: NumberDecimal,
+    type: mongoose.Types.Decimal128,
   },
   current_value: {
-    type: NumberDecimal,
+    type: mongoose.Types.Decimal128,
   },
   quantity: {
     type: Number,
