@@ -1,0 +1,15 @@
+{
+  "name": "Assignment 5.4",
+  "version": "1.0.0",
+  "description": "",
+  "type":"module",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Paras Sutariya",
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^29.3.1"
+  }
+}
