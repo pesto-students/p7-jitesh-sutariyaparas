@@ -23,7 +23,6 @@ create table warehouse(
     warehouse_id int NOT NULL AUTO_INCREMENT,
     name CHAR(30),
     city_id int,
-    EXTRACONTEXT json,
 	PRIMARY KEY (warehouse_id),
     FOREIGN KEY (city_id) REFERENCES city(city_id)
 );
