@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "2b668b98-7d22-40e5-aaea-9c42b0dd006d",
+		"name": "WeatherApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Current Weather Single city",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/current_weather?city=Surat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"current_weather"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Surat"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Current Weather Multy city",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Daily Forecast Multi City",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/daily_forecast_multi_city?cities=surat,mumbai,pune,delhi,Jaypur&page=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"daily_forecast_multi_city"
+					],
+					"query": [
+						{
+							"key": "cities",
+							"value": "surat,mumbai,pune,delhi,Jaypur"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Daily Forecast Single City",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/daily_forecast?city=Pune",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"daily_forecast"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Pune"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
