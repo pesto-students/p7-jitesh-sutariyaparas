@@ -73,7 +73,7 @@ const login = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  console.log("Use Update");
+  console.log("User Update",req.params.id);
   try {
     const user = await User.updateOne(
       { _id: req.params.id },

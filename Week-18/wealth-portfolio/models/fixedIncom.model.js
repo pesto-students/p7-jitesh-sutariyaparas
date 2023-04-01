@@ -25,7 +25,11 @@ const FixedIncomeSchema = new Schema({
   notes: {
     type: String,
   },
-  userId: String
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  }
 });
 
 module.exports = mongoose.model("FixedIncome", FixedIncomeSchema);

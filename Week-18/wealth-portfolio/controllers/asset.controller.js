@@ -26,7 +26,7 @@ const createAsset = async (req, res) => {
     console.log("Create Asset", req.body);
     const assetValue = await Asset.create({
       ...req.body,
-      user_id: req.param.user_id,
+      user_id: req.params.user_id,
     });
     res.json(assetValue);
   } catch (err) {
