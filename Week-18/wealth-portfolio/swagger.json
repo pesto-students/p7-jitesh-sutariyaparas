@@ -1,3 +1,424 @@
 {
-    
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Wealth Portfolio API Documentation",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3005"
+        }
+    ],
+    "paths": {
+        "/v1/api/users": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "SignUp/Create User",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "firstname": "Paras",
+                                    "lastname": "Sutariya",
+                                    "email": "parassutariya@gmail.com",
+                                    "password": "123456"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get User All user",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/user/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User Login",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "email": "parassutariya@gmail.com",
+                                    "password": "123456"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/users/{user_id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get User by ID",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update User by ID",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "firstname": "PARAS",
+                                    "lastname": "SUTARIYA"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Delete user by ID",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/assets/{user_id}": {
+            "post": {
+                "tags": [
+                    "Asset"
+                ],
+                "summary": "Assets Create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "Truck for user 2",
+                                    "type": "Vehicle"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/assets/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "Asset"
+                ],
+                "summary": "Get all Assets",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/assets/6427ea8ebd046bb0dd54895c": {
+            "get": {
+                "tags": [
+                    "Asset"
+                ],
+                "summary": "Get Asset by ID",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Asset"
+                ],
+                "summary": "Update Assets",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "purchase_price": 100000,
+                                    "current_value": 500000.55,
+                                    "quantity": 1,
+                                    "notes": "Assets note...",
+                                    "user_id": "64217972b84cf42c6e779df9"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Asset"
+                ],
+                "summary": "Delete Asset by id",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/expense/{user_id}": {
+            "post": {
+                "tags": [
+                    "Expense"
+                ],
+                "summary": "Expense Create",
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "string",
+                                "example": "\"{\\r\\n    \\\"name\\\":\\\"Medical\\\",\\r\\n    \\\"date\\\":\\\"01-04-2023\\\"\\r\\n}\""
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
