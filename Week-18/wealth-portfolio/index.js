@@ -14,7 +14,7 @@ app.use("/v1", require("./routes/asset.route"));
 app.use("/v1", require("./routes/income.route"));
 app.use("/v1", require("./routes/expense.route"));
 app.use("/v1", require("./routes/saving.route"));
-// app.use("/v1", require("./routes/equity.route"));
+app.use("/v1", require("./routes/equity.route"));
 app.use("/v1", require("./routes/fixedIncome.route"));
 
 app.use(function (req, res) {
