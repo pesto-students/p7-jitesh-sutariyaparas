@@ -14,7 +14,7 @@ const ExpenseSchema = new Schema({
     type: Date,
   },
   amount: {
-    type: NumberDecimal,
+    type: mongoose.Types.Decimal128,
   },
   notes: {
     type: String,
