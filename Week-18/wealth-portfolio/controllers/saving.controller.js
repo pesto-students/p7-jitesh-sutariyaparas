@@ -4,7 +4,10 @@ const Saving = require("../models/saving.model");
 const getAllSavings = async (req, res) => {
   console.log("GET All Saving..");
   try {
-    const saving = await Saving.find({"user_id":req.params.user_id});
+    const pageNumber = parseInt(req.query.page_number) || 1;
+    const pageSize = parseInt(req.query.page_size) || 10;
+    const skip = (pageNumber - 1) * pageSize;
+    const saving = await Saving.find({"user_id":req.params.user_id}).skip(skip).limit(pageSize);
     res.json(saving);
   } catch (err) {
     console.log(err);

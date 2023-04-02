@@ -3,7 +3,10 @@ const Income = require("../models/income.model");
 const getAllIncome = async (req, res) => {
   console.log("GET All Income");
   try {
-    const asset = await Income.find({ user_id: req.params.user_id });
+    const pageNumber = parseInt(req.query.page_number) || 1;
+    const pageSize = parseInt(req.query.page_size) || 10;
+    const skip = (pageNumber - 1) * pageSize;
+    const asset = await Income.find({ user_id: req.params.user_id }).skip(skip).limit(pageSize);
     res.json(asset);
   } catch (err) {
     console.log(err);

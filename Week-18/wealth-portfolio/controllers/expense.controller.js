@@ -24,7 +24,7 @@ const getAllExpense = async (req, res) => {
       console.log("expense___record Length",expense.length)
       res.json(expense);
     } else {
-      const expense = await Expense.find({ user_id: req.params.user_id });
+      const expense = await Expense.find({ user_id: req.params.user_id }).skip(skip).limit(pageSize);
       res.json(expense);
     }
   } catch (err) {

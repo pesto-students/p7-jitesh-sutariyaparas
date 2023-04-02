@@ -4,7 +4,10 @@ const Equity = require("../models/equity.model");
 const getAllEquities = async (req, res) => {
   console.log("GET All Equity..");
   try {
-    const equity = await Equity.find({"user_id":req.params.user_id});
+    const pageNumber = parseInt(req.query.page_number) || 1;
+    const pageSize = parseInt(req.query.page_size) || 10;
+    const skip = (pageNumber - 1) * pageSize;
+    const equity = await Equity.find({"user_id":req.params.user_id}).skip(skip).limit(pageSize);
     res.json(equity);
   } catch (err) {
     console.log(err);

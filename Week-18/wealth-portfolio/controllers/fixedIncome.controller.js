@@ -4,7 +4,10 @@ const FixedIncome = require("../models/fixedIncome.model");
 const getAllFixedIncomes = async (req, res) => {
   console.log("GET All FixedIncome..");
   try {
-    const fixedIncome = await FixedIncome.find({"user_id":req.params.user_id});
+    const pageNumber = parseInt(req.query.page_number) || 1;
+    const pageSize = parseInt(req.query.page_size) || 10;
+    const skip = (pageNumber - 1) * pageSize;
+    const fixedIncome = await FixedIncome.find({"user_id":req.params.user_id}).skip(skip).limit(pageSize);
     res.json(fixedIncome);
   } catch (err) {
     console.log(err);

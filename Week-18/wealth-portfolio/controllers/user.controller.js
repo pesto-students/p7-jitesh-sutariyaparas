@@ -5,7 +5,10 @@ const jwt = require("jsonwebtoken");
 const getUsers = async (req, res) => {
   console.log("GET USERS");
   try {
-    const user = await User.find();
+    const pageNumber = parseInt(req.query.page_number) || 1;
+    const pageSize = parseInt(req.query.page_size) || 10;
+    const skip = (pageNumber - 1) * pageSize;
+    const user = await User.find().skip(skip).limit(pageSize);
     res.json(user);
   } catch (err) {
     console.log(err);
