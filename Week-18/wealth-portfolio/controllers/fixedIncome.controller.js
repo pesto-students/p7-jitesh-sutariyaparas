@@ -6,9 +6,10 @@ const getAllFixedIncomes = async (req, res) => {
     const pageNumber = parseInt(req.query.page_number) || 1;
     const pageSize = parseInt(req.query.page_size) || 10;
     const skip = (pageNumber - 1) * pageSize;
-
     let startDate = req.query.start_date;
     let endDate = req.query.end_date;
+    const totalRecordsCount = await FixedIncome.countDocuments();
+    const totalPages = Math.ceil(totalRecordsCount / pageSize);
     if (startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
@@ -21,18 +22,26 @@ const getAllFixedIncomes = async (req, res) => {
       })
         .skip(skip)
         .limit(pageSize);
-      res.json(fixedIncome);
+      res.json({
+        total_page_count: totalPages,
+        current_page: pageNumber,
+        fixed_income: fixedIncome,
+      });
     } else {
       const fixedIncome = await FixedIncome.find({
         user_id: req.params.user_id,
       })
         .skip(skip)
         .limit(pageSize);
-      res.json(fixedIncome);
+      res.json({
+        total_page_count: totalPages,
+        current_page: pageNumber,
+        fixed_income: fixedIncome,
+      });
     }
   } catch (err) {
     console.log(err);
-    res.status(500).send(err);
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -43,7 +52,7 @@ const getFixedIncomeById = async (req, res) => {
     res.json(fixedIncome);
   } catch (err) {
     console.log(err);
-    res.status(500).send(err);
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -57,7 +66,7 @@ const createFixedIncome = async (req, res) => {
     res.json(fixedIncomeValue);
   } catch (err) {
     console.log(err);
-    res.status(500).send(err);
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -71,7 +80,7 @@ const updateFixedIncome = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
-    res.status(500).send(err);
+    res.status(500).send({ error: String(err) });
   }
 };
 

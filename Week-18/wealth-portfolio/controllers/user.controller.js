@@ -8,11 +8,17 @@ const getUsers = async (req, res) => {
     const pageNumber = parseInt(req.query.page_number) || 1;
     const pageSize = parseInt(req.query.page_size) || 10;
     const skip = (pageNumber - 1) * pageSize;
+    const totalRecordsCount = await User.countDocuments();
+    const totalPages = Math.ceil(totalRecordsCount / pageSize);
     const user = await User.find().skip(skip).limit(pageSize);
-    res.json(user);
+    res.json({
+      total_page_count: totalPages,
+      current_page: pageNumber,
+      user: user,
+    });
   } catch (err) {
     console.log(err);
-    res.status(500).send({'error':String(err)});;
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -23,7 +29,7 @@ const getUserById = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
-    res.status(500).send({'error':String(err)});;
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -42,7 +48,7 @@ const createUser = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
-    res.status(500).send({'error':String(err)});;
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -75,7 +81,7 @@ const login = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    res.status(500).send({'error':String(err)});;
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -89,7 +95,7 @@ const updateUser = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
-    res.status(500).send({'error':String(err)});;
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -101,7 +107,7 @@ const deleteUser = (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(500).send({'error':String(err)});;
+    res.status(500).send({ error: String(err) });
   }
 };
 

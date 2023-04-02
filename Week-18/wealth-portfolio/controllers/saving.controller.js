@@ -8,6 +8,8 @@ const getAllSavings = async (req, res) => {
     const skip = (pageNumber - 1) * pageSize;
     let startDate = req.query.start_date;
     let endDate = req.query.end_date;
+    const totalRecordsCount = await Saving.countDocuments();
+    const totalPages = Math.ceil(totalRecordsCount / pageSize);
     if (startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
@@ -20,16 +22,24 @@ const getAllSavings = async (req, res) => {
       })
         .skip(skip)
         .limit(pageSize);
-      res.json(saving);
+      res.json({
+        total_page_count: totalPages,
+        current_page: pageNumber,
+        saving: saving,
+      });
     } else {
       const saving = await Saving.find({ user_id: req.params.user_id })
         .skip(skip)
         .limit(pageSize);
-      res.json(saving);
+      res.json({
+        total_page_count: totalPages,
+        current_page: pageNumber,
+        saving: saving,
+      });
     }
   } catch (err) {
     console.log(err);
-    res.status(500).send(err);
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -40,7 +50,7 @@ const getSavingById = async (req, res) => {
     res.json(saving);
   } catch (err) {
     console.log(err);
-    res.status(500).send(err);
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -54,7 +64,7 @@ const createSaving = async (req, res) => {
     res.json(SavingValue);
   } catch (err) {
     console.log(err);
-    res.status(500).send(err);
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -68,7 +78,7 @@ const updateSaving = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
-    res.status(500).send(err);
+    res.status(500).send({ error: String(err) });
   }
 };
 

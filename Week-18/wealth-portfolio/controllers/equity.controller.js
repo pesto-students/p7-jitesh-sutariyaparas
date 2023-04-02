@@ -8,6 +8,8 @@ const getAllEquities = async (req, res) => {
     const pageNumber = parseInt(req.query.page_number) || 1;
     const pageSize = parseInt(req.query.page_size) || 10;
     const skip = (pageNumber - 1) * pageSize;
+    const totalRecordsCount = await Equity.countDocuments();
+    const totalPages = Math.ceil(totalRecordsCount / pageSize);
     if (startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
@@ -20,16 +22,24 @@ const getAllEquities = async (req, res) => {
       })
         .skip(skip)
         .limit(pageSize);
-      res.json(equity);
+      res.json({
+        total_page_count: totalPages,
+        current_page: pageNumber,
+        equity: equity,
+      });
     } else {
       const equity = await Equity.find({ user_id: req.params.user_id })
         .skip(skip)
         .limit(pageSize);
-      res.json(equity);
+      res.json({
+        total_page_count: totalPages,
+        current_page: pageNumber,
+        equity: equity,
+      });
     }
   } catch (err) {
     console.log(err);
-    res.status(500).send({'error':String(err)});
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -40,7 +50,7 @@ const getEquityById = async (req, res) => {
     res.json(equity);
   } catch (err) {
     console.log(err);
-    res.status(500).send({'error':String(err)});;
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -54,7 +64,7 @@ const createEquity = async (req, res) => {
     res.json(equityValue);
   } catch (err) {
     console.log(err);
-    res.status(500).send({'error':String(err)});;
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -68,7 +78,7 @@ const updateEquity = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
-    res.status(500).send({'error':String(err)});;
+    res.status(500).send({ error: String(err) });
   }
 };
 
@@ -80,7 +90,7 @@ const deleteEquity = (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(500).send({'error':String(err)});;
+    res.status(500).send({ error: String(err) });
   }
 };
 
