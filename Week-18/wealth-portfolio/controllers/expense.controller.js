@@ -18,17 +18,22 @@ const getAllExpense = async (req, res) => {
             $lte: end,
           },
           user_id: req.params.user_id,
-        },
+        }
         // { name: 1, date: 1 }
-      ).skip(skip).limit(pageSize);
-      console.log("expense___record Length",expense.length)
+      )
+        .skip(skip)
+        .limit(pageSize);
+      console.log("expense___record Length", expense.length);
       res.json(expense);
     } else {
-      const expense = await Expense.find({ user_id: req.params.user_id }).skip(skip).limit(pageSize);
+      const expense = await Expense.find({ user_id: req.params.user_id })
+        .skip(skip)
+        .limit(pageSize);
       res.json(expense);
     }
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -39,6 +44,7 @@ const getExpenseById = async (req, res) => {
     res.json(expense);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -66,6 +72,7 @@ const createExpense = async (req, res) => {
     res.json(expenseValue);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -79,14 +86,20 @@ const updateExpense = async (req, res) => {
     res.json(expense);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
 const deleteExpense = (req, res) => {
   console.log("Expense delete");
-  Expense.deleteOne({ _id: req.params.id }).then((result) => {
-    res.json(result);
-  });
+  try {
+    Expense.deleteOne({ _id: req.params.id }).then((result) => {
+      res.json(result);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
 };
 
 module.exports = {

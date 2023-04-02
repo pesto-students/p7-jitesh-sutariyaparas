@@ -29,6 +29,7 @@ const getAllIncome = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -39,6 +40,7 @@ const getIncomeById = async (req, res) => {
     res.json(asset);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -52,6 +54,7 @@ const createIncome = async (req, res) => {
     res.json(assetValue);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -65,6 +68,7 @@ const updateIncome = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 

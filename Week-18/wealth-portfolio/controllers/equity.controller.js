@@ -29,6 +29,7 @@ const getAllEquities = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    res.status(500).send({'error':String(err)});
   }
 };
 
@@ -39,6 +40,7 @@ const getEquityById = async (req, res) => {
     res.json(equity);
   } catch (err) {
     console.log(err);
+    res.status(500).send({'error':String(err)});;
   }
 };
 
@@ -52,6 +54,7 @@ const createEquity = async (req, res) => {
     res.json(equityValue);
   } catch (err) {
     console.log(err);
+    res.status(500).send({'error':String(err)});;
   }
 };
 
@@ -65,14 +68,20 @@ const updateEquity = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
+    res.status(500).send({'error':String(err)});;
   }
 };
 
 const deleteEquity = (req, res) => {
   console.log("Equity delete");
-  Equity.deleteOne({ _id: req.params.id }).then((result) => {
-    res.json(result);
-  });
+  try {
+    Equity.deleteOne({ _id: req.params.id }).then((result) => {
+      res.json(result);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({'error':String(err)});;
+  }
 };
 
 module.exports = {

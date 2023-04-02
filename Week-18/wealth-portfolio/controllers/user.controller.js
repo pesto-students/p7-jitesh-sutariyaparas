@@ -12,6 +12,7 @@ const getUsers = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
+    res.status(500).send({'error':String(err)});;
   }
 };
 
@@ -22,6 +23,7 @@ const getUserById = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
+    res.status(500).send({'error':String(err)});;
   }
 };
 
@@ -40,6 +42,7 @@ const createUser = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
+    res.status(500).send({'error':String(err)});;
   }
 };
 
@@ -70,13 +73,14 @@ const login = async (req, res) => {
     } else {
       res.json("User does not exist");
     }
-  } catch (e) {
-    console.log(e);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({'error':String(err)});;
   }
 };
 
 const updateUser = async (req, res) => {
-  console.log("User Update",req.params.id);
+  console.log("User Update", req.params.id);
   try {
     const user = await User.updateOne(
       { _id: req.params.id },
@@ -85,14 +89,20 @@ const updateUser = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
+    res.status(500).send({'error':String(err)});;
   }
 };
 
 const deleteUser = (req, res) => {
-  console.log("Use delete");
-  User.deleteOne({ _id: req.params.id }).then((result) => {
-    res.json(result);
-  });
+  console.log("User delete");
+  try {
+    User.deleteOne({ _id: req.params.id }).then((result) => {
+      res.json(result);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({'error':String(err)});;
+  }
 };
 
 module.exports = {

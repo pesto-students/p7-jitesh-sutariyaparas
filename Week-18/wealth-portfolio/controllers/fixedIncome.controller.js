@@ -32,6 +32,7 @@ const getAllFixedIncomes = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -42,6 +43,7 @@ const getFixedIncomeById = async (req, res) => {
     res.json(fixedIncome);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -55,6 +57,7 @@ const createFixedIncome = async (req, res) => {
     res.json(fixedIncomeValue);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -68,6 +71,7 @@ const updateFixedIncome = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 

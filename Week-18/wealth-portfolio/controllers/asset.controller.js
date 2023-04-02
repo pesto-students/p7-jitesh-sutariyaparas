@@ -29,6 +29,7 @@ const getAllAssets = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -39,6 +40,7 @@ const getAssetById = async (req, res) => {
     res.json(asset);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -52,6 +54,7 @@ const createAsset = async (req, res) => {
     res.json(assetValue);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -62,14 +65,20 @@ const updateAsset = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
 const deleteAsset = (req, res) => {
   console.log("Asset delete");
-  Asset.deleteOne({ _id: req.params.id }).then((result) => {
-    res.json(result);
-  });
+  try {
+    Asset.deleteOne({ _id: req.params.id }).then((result) => {
+      res.json(result);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
 };
 
 module.exports = {

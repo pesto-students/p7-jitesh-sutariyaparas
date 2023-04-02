@@ -29,6 +29,7 @@ const getAllSavings = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -39,6 +40,7 @@ const getSavingById = async (req, res) => {
     res.json(saving);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -52,6 +54,7 @@ const createSaving = async (req, res) => {
     res.json(SavingValue);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
@@ -65,6 +68,7 @@ const updateSaving = async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
+    res.status(500).send(err);
   }
 };
 
