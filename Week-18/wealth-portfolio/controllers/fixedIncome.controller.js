@@ -8,11 +8,17 @@ const getAllFixedIncomes = async (req, res) => {
     const skip = (pageNumber - 1) * pageSize;
     let startDate = req.query.start_date;
     let endDate = req.query.end_date;
-    const totalRecordsCount = await FixedIncome.countDocuments();
-    const totalPages = Math.ceil(totalRecordsCount / pageSize);
     if (startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
+      const totalRecordsCount = await FixedIncome.countDocuments({
+        purchase_date: {
+          $gte: start,
+          $lte: end,
+        },
+        user_id: req.params.user_id,
+      });
+      const totalPages = Math.ceil(totalRecordsCount / pageSize);
       const fixedIncome = await FixedIncome.find({
         purchase_date: {
           $gte: start,
@@ -28,6 +34,8 @@ const getAllFixedIncomes = async (req, res) => {
         fixed_income: fixedIncome,
       });
     } else {
+      const totalRecordsCount = await FixedIncome.countDocuments();
+      const totalPages = Math.ceil(totalRecordsCount / pageSize);
       const fixedIncome = await FixedIncome.find({
         user_id: req.params.user_id,
       })

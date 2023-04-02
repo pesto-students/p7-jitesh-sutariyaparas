@@ -8,11 +8,18 @@ const getAllEquities = async (req, res) => {
     const pageNumber = parseInt(req.query.page_number) || 1;
     const pageSize = parseInt(req.query.page_size) || 10;
     const skip = (pageNumber - 1) * pageSize;
-    const totalRecordsCount = await Equity.countDocuments();
-    const totalPages = Math.ceil(totalRecordsCount / pageSize);
+
     if (startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
+      const totalRecordsCount = await Equity.countDocuments({
+        purchase_date: {
+          $gte: start,
+          $lte: end,
+        },
+        user_id: req.params.user_id,
+      });
+      const totalPages = Math.ceil(totalRecordsCount / pageSize);
       const equity = await Equity.find({
         purchase_date: {
           $gte: start,
@@ -28,6 +35,8 @@ const getAllEquities = async (req, res) => {
         equity: equity,
       });
     } else {
+      const totalRecordsCount = await Equity.countDocuments();
+      const totalPages = Math.ceil(totalRecordsCount / pageSize);
       const equity = await Equity.find({ user_id: req.params.user_id })
         .skip(skip)
         .limit(pageSize);

@@ -9,12 +9,17 @@ const getAllExpense = async (req, res) => {
     const pageSize = parseInt(req.query.page_size) || 10;
     const skip = (pageNumber - 1) * pageSize;
 
-    const totalRecordsCount = await Expense.countDocuments();
-    const totalPages = Math.ceil(totalRecordsCount / pageSize);
-
     if (startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
+      const totalRecordsCount = await Expense.countDocuments({
+        date: {
+          $gte: start,
+          $lte: end,
+        },
+        user_id: req.params.user_id,
+      });
+      const totalPages = Math.ceil(totalRecordsCount / pageSize);
       const expense = await Expense.find(
         {
           date: {
@@ -34,6 +39,8 @@ const getAllExpense = async (req, res) => {
         expense: expense,
       });
     } else {
+      const totalRecordsCount = await Expense.countDocuments();
+      const totalPages = Math.ceil(totalRecordsCount / pageSize);
       const expense = await Expense.find({ user_id: req.params.user_id })
         .skip(skip)
         .limit(pageSize);

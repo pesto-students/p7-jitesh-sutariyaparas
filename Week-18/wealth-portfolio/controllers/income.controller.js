@@ -8,11 +8,17 @@ const getAllIncome = async (req, res) => {
     const skip = (pageNumber - 1) * pageSize;
     let startDate = req.query.start_date;
     let endDate = req.query.end_date;
-    const totalRecordsCount = await Income.countDocuments();
-    const totalPages = Math.ceil(totalRecordsCount / pageSize);
     if (startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
+      const totalRecordsCount = await Income.countDocuments({
+        date: {
+          $gte: start,
+          $lte: end,
+        },
+        user_id: req.params.user_id,
+      });
+      const totalPages = Math.ceil(totalRecordsCount / pageSize);
       const asset = await Income.find({
         date: {
           $gte: start,
@@ -28,6 +34,8 @@ const getAllIncome = async (req, res) => {
         asset: asset,
       });
     } else {
+      const totalRecordsCount = await Income.countDocuments();
+      const totalPages = Math.ceil(totalRecordsCount / pageSize);
       const asset = await Income.find({ user_id: req.params.user_id })
         .skip(skip)
         .limit(pageSize);
