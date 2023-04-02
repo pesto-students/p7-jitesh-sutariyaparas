@@ -1,14 +1,32 @@
 const Saving = require("../models/saving.model");
 
-
 const getAllSavings = async (req, res) => {
   console.log("GET All Saving..");
   try {
     const pageNumber = parseInt(req.query.page_number) || 1;
     const pageSize = parseInt(req.query.page_size) || 10;
     const skip = (pageNumber - 1) * pageSize;
-    const saving = await Saving.find({"user_id":req.params.user_id}).skip(skip).limit(pageSize);
-    res.json(saving);
+    let startDate = req.query.start_date;
+    let endDate = req.query.end_date;
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const saving = await Saving.find({
+        date: {
+          $gte: start,
+          $lte: end,
+        },
+        user_id: req.params.user_id,
+      })
+        .skip(skip)
+        .limit(pageSize);
+      res.json(saving);
+    } else {
+      const saving = await Saving.find({ user_id: req.params.user_id })
+        .skip(skip)
+        .limit(pageSize);
+      res.json(saving);
+    }
   } catch (err) {
     console.log(err);
   }
@@ -40,7 +58,10 @@ const createSaving = async (req, res) => {
 const updateSaving = async (req, res) => {
   console.log("Saving Update");
   try {
-    const user = await Saving.updateOne({ _id: req.params.id }, { ...req.body });
+    const user = await Saving.updateOne(
+      { _id: req.params.id },
+      { ...req.body }
+    );
     res.json(user);
   } catch (err) {
     console.log(err);

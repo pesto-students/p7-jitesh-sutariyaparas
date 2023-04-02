@@ -6,8 +6,27 @@ const getAllIncome = async (req, res) => {
     const pageNumber = parseInt(req.query.page_number) || 1;
     const pageSize = parseInt(req.query.page_size) || 10;
     const skip = (pageNumber - 1) * pageSize;
-    const asset = await Income.find({ user_id: req.params.user_id }).skip(skip).limit(pageSize);
-    res.json(asset);
+    let startDate = req.query.start_date;
+    let endDate = req.query.end_date;
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const asset = await Income.find({
+        date: {
+          $gte: start,
+          $lte: end,
+        },
+        user_id: req.params.user_id,
+      })
+        .skip(skip)
+        .limit(pageSize);
+      res.json(asset);
+    } else {
+      const asset = await Income.find({ user_id: req.params.user_id })
+        .skip(skip)
+        .limit(pageSize);
+      res.json(asset);
+    }
   } catch (err) {
     console.log(err);
   }

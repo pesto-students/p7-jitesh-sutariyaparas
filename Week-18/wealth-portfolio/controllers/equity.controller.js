@@ -1,14 +1,32 @@
 const Equity = require("../models/equity.model");
 
-
 const getAllEquities = async (req, res) => {
   console.log("GET All Equity..");
   try {
+    let startDate = req.query.start_date;
+    let endDate = req.query.end_date;
     const pageNumber = parseInt(req.query.page_number) || 1;
     const pageSize = parseInt(req.query.page_size) || 10;
     const skip = (pageNumber - 1) * pageSize;
-    const equity = await Equity.find({"user_id":req.params.user_id}).skip(skip).limit(pageSize);
-    res.json(equity);
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const equity = await Equity.find({
+        purchase_date: {
+          $gte: start,
+          $lte: end,
+        },
+        user_id: req.params.user_id,
+      })
+        .skip(skip)
+        .limit(pageSize);
+      res.json(equity);
+    } else {
+      const equity = await Equity.find({ user_id: req.params.user_id })
+        .skip(skip)
+        .limit(pageSize);
+      res.json(equity);
+    }
   } catch (err) {
     console.log(err);
   }
@@ -40,7 +58,10 @@ const createEquity = async (req, res) => {
 const updateEquity = async (req, res) => {
   console.log("Equity Update");
   try {
-    const user = await Equity.updateOne({ _id: req.params.id }, { ...req.body });
+    const user = await Equity.updateOne(
+      { _id: req.params.id },
+      { ...req.body }
+    );
     res.json(user);
   } catch (err) {
     console.log(err);
