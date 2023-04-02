@@ -12,6 +12,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // const router = require('express').Router()
 // router.use('/api-docs', swaggerUi.serve);
 // router.get('/api-docs', swaggerUi.setup(swaggerDocument));
+// https://metamug.com/util/postman-to-swagger/
+// https://jsonformatter.org/yaml-to-json
 
 
 // connecting to db
