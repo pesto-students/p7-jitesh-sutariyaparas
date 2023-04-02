@@ -229,7 +229,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3005/v1/api/assets/user/{{user_id}}?token={{token}}",
+					"raw": "http://localhost:3005/v1/api/assets/user/{{user_id}}?token={{token}}&start_date=\"2023-01-01\"&end_date=\"2023-12-31\"&page_number=1&page_size=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -246,6 +246,26 @@
 						{
 							"key": "token",
 							"value": "{{token}}"
+						},
+						{
+							"key": "start_date",
+							"value": "\"2023-01-01\"",
+							"description": "optional"
+						},
+						{
+							"key": "end_date",
+							"value": "\"2023-12-31\"",
+							"description": "optional"
+						},
+						{
+							"key": "page_number",
+							"value": "1",
+							"description": "optional"
+						},
+						{
+							"key": "page_size",
+							"value": "1",
+							"description": "optional"
 						}
 					]
 				}
@@ -352,7 +372,12 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"Medical\",\r\n    \"date\":\"01-04-2023\"\r\n}"
+					"raw": "{\r\n    \"name\":\"Food\",\r\n    \"date\":\"01-05-2023\",\r\n    \"amount\":2000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:3005/v1/api/expense/{{user_id}}?token={{token}}",
@@ -371,6 +396,247 @@
 						{
 							"key": "token",
 							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Expense",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/expense/user/{{user_id}}?token={{token}}&start_date=\"2023-01-01\"&end_date=\"2023-12-31\"&page_number=2&page_size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"expense",
+						"user",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "start_date",
+							"value": "\"2023-01-01\"",
+							"description": "optional"
+						},
+						{
+							"key": "end_date",
+							"value": "\"2023-12-31\"",
+							"description": "optional"
+						},
+						{
+							"key": "page_number",
+							"value": "2",
+							"description": "optional"
+						},
+						{
+							"key": "page_size",
+							"value": "10",
+							"description": "optional"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Equity",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/equity/user/{{user_id}}?token={{token}}&start_date=\"2023-01-01\"&end_date=\"2023-12-31\"&page_number=2&page_size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"equity",
+						"user",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "start_date",
+							"value": "\"2023-01-01\"",
+							"description": "optional"
+						},
+						{
+							"key": "end_date",
+							"value": "\"2023-12-31\"",
+							"description": "optional"
+						},
+						{
+							"key": "page_number",
+							"value": "2",
+							"description": "optional"
+						},
+						{
+							"key": "page_size",
+							"value": "10",
+							"description": "optional"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all savings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/savings/user/{{user_id}}?token={{token}}&start_date=\"2023-01-01\"&end_date=\"2023-12-31\"&page_number=2&page_size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"savings",
+						"user",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "start_date",
+							"value": "\"2023-01-01\"",
+							"description": "optional"
+						},
+						{
+							"key": "end_date",
+							"value": "\"2023-12-31\"",
+							"description": "optional"
+						},
+						{
+							"key": "page_number",
+							"value": "2",
+							"description": "optional"
+						},
+						{
+							"key": "page_size",
+							"value": "10",
+							"description": "optional"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All FixedIncome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/fixed_incomes/user/{{user_id}}?token={{token}}&start_date=\"2023-01-01\"&end_date=\"2023-12-31\"&page_number=2&page_size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"fixed_incomes",
+						"user",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "start_date",
+							"value": "\"2023-01-01\"",
+							"description": "optional"
+						},
+						{
+							"key": "end_date",
+							"value": "\"2023-12-31\"",
+							"description": "optional"
+						},
+						{
+							"key": "page_number",
+							"value": "2",
+							"description": "optional"
+						},
+						{
+							"key": "page_size",
+							"value": "10",
+							"description": "optional"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all Income",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/income/user/{{user_id}}?token={{token}}&start_date=\"2023-01-01\"&end_date=\"2023-12-31\"&page_number=2&page_size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"income",
+						"user",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "start_date",
+							"value": "\"2023-01-01\""
+						},
+						{
+							"key": "end_date",
+							"value": "\"2023-12-31\""
+						},
+						{
+							"key": "page_number",
+							"value": "2"
+						},
+						{
+							"key": "page_size",
+							"value": "10"
 						}
 					]
 				}
