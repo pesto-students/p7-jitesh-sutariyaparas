@@ -55,7 +55,7 @@ const getSavingById = async (req, res) => {
   console.log("GET Saving BY ID", req.params.id);
   try {
     const saving = await Saving.findById(req.params.id);
-    res.json(saving);
+    res.json(saving || {});
   } catch (err) {
     console.log(err);
     res.status(500).send({ error: String(err) });

@@ -60,7 +60,7 @@ const getExpenseById = async (req, res) => {
   console.log("GET Expense BY ID", req.params.id);
   try {
     const expense = await Expense.findById(req.params.id);
-    res.json(expense);
+    res.json(expense || {});
   } catch (err) {
     console.log(err);
     res.status(500).send({ error: String(err) });

@@ -208,7 +208,7 @@
         "/v1/api/assets/{user_id}": {
             "post": {
                 "tags": [
-                    "Asset"
+                    "Assets"
                 ],
                 "summary": "Assets Create",
                 "requestBody": {
@@ -217,8 +217,12 @@
                             "schema": {
                                 "type": "object",
                                 "example": {
-                                    "name": "Truck for user 2",
-                                    "type": "Vehicle"
+                                    "name": "Swift",
+                                    "type": "Vehicle",
+                                    "purchase_date": "2023-04-05",
+                                    "purchase_price": 800000,
+                                    "current_value": 500000,
+                                    "quantity": 1
                                 }
                             }
                         }
@@ -255,9 +259,209 @@
         "/v1/api/assets/user/{user_id}": {
             "get": {
                 "tags": [
-                    "Asset"
+                    "Assets"
                 ],
                 "summary": "Get all Assets",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "optional",
+                        "example": "\"2023-01-01\""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "optional",
+                        "example": "\"2023-12-31\""
+                    },
+                    {
+                        "name": "page_number",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "optional",
+                        "example": "1"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "optional",
+                        "example": "10"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/assets/{asset_id}": {
+            "get": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Get Asset by ID",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "asset_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Update Assets",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "purchase_price": 100000,
+                                    "current_value": 500000.55,
+                                    "quantity": 1,
+                                    "notes": "Assets note...",
+                                    "user_id": "64217972b84cf42c6e779df9"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "asset_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Delete Asset by id",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "asset_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/expense/{user_id}": {
+            "post": {
+                "tags": [
+                    "Expense"
+                ],
+                "summary": "Expense Create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "Pizza",
+                                    "date": "2023-04-05",
+                                    "type": "Food",
+                                    "amount": 2000,
+                                    "notes": "online order for office"
+                                }
+                            }
+                        }
+                    }
+                },
                 "parameters": [
                     {
                         "name": "token",
@@ -286,12 +490,12 @@
                 }
             }
         },
-        "/v1/api/assets/6427ea8ebd046bb0dd54895c": {
+        "/v1/api/expense/user/{user_id}": {
             "get": {
                 "tags": [
-                    "Asset"
+                    "Expense"
                 ],
-                "summary": "Get Asset by ID",
+                "summary": "Get All Expense",
                 "parameters": [
                     {
                         "name": "token",
@@ -300,6 +504,84 @@
                             "type": "string"
                         },
                         "example": "{{token}}"
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "optional",
+                        "example": "\"2023-01-01\""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "optional",
+                        "example": "\"2023-12-31\""
+                    },
+                    {
+                        "name": "page_number",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "optional",
+                        "example": "2"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "optional",
+                        "example": "10"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/expense/{expense_id}": {
+            "get": {
+                "tags": [
+                    "Expense"
+                ],
+                "summary": "Get Expense by ID",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "expense_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -313,9 +595,9 @@
             },
             "put": {
                 "tags": [
-                    "Asset"
+                    "Expense"
                 ],
-                "summary": "Update Assets",
+                "summary": "Update Expense",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -325,7 +607,7 @@
                                     "purchase_price": 100000,
                                     "current_value": 500000.55,
                                     "quantity": 1,
-                                    "notes": "Assets note...",
+                                    "notes": "Expenses note...",
                                     "user_id": "64217972b84cf42c6e779df9"
                                 }
                             }
@@ -353,9 +635,195 @@
             },
             "delete": {
                 "tags": [
-                    "Asset"
+                    "Expense"
                 ],
-                "summary": "Delete Asset by id",
+                "summary": "Delete Expense by id",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "expense_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/equity/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "Equity"
+                ],
+                "summary": "GET All Equity",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "page_number",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "optional",
+                        "example": "1"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "optional",
+                        "example": "10"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/equity/{user_id}": {
+            "post": {
+                "tags": [
+                    "Equity"
+                ],
+                "summary": "Equity Create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "Equity",
+                                    "purchase_date": "2023-04-05",
+                                    "type": "Equity 1",
+                                    "purchase_price": 2000,
+                                    "current_value": 3000,
+                                    "notes": "note for Equity...",
+                                    "quantity": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/equity/{equity_id}": {
+            "get": {
+                "tags": [
+                    "Equity"
+                ],
+                "summary": "Get Equity by ID",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "equity_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Equity"
+                ],
+                "summary": "Update Equity",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "purchase_price": 100000,
+                                    "current_value": 500000.55,
+                                    "quantity": 1,
+                                    "notes": "Equity note...",
+                                    "user_id": "64217972b84cf42c6e779df9"
+                                }
+                            }
+                        }
+                    }
+                },
                 "parameters": [
                     {
                         "name": "token",
@@ -374,20 +842,130 @@
                         }
                     }
                 }
+            },
+            "delete": {
+                "tags": [
+                    "Equity"
+                ],
+                "summary": "Delete Equity by id",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "equity_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+
+        },
+        
+        "/v1/api/savings/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "Savings"
+                ],
+                "summary": "Get all Savings",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "optional",
+                        "example": "\"2023-01-01\""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "optional",
+                        "example": "\"2023-12-31\""
+                    },
+                    {
+                        "name": "page_number",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "optional",
+                        "example": "1"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "optional",
+                        "example": "10"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
             }
         },
-        "/v1/api/expense/{user_id}": {
+        "/v1/api/Savings/{user_id}": {
             "post": {
                 "tags": [
-                    "Expense"
+                    "Savings"
                 ],
-                "summary": "Expense Create",
+                "summary": "Savings Create",
                 "requestBody": {
                     "content": {
-                        "*/*": {
+                        "application/json": {
                             "schema": {
-                                "type": "string",
-                                "example": "\"{\\r\\n    \\\"name\\\":\\\"Medical\\\",\\r\\n    \\\"date\\\":\\\"01-04-2023\\\"\\r\\n}\""
+                                "type": "object",
+                                "example": {
+                                    "name": "FD",
+                                    "date": "2023-04-05",
+                                    "type": "FD",
+                                    "amount": 2000,
+                                    "notes": "FD..."
+                                }
                             }
                         }
                     }
@@ -403,6 +981,540 @@
                     },
                     {
                         "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/Savings/{saving_id}": {
+            "get": {
+                "tags": [
+                    "Savings"
+                ],
+                "summary": "Get Savings by ID",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "saving_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Savings"
+                ],
+                "summary": "Update Savings",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "amount": 10000,
+                                    "notes": "Savingss note..."
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Savings"
+                ],
+                "summary": "Delete Savings by id",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "saving_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/fixed_incomes/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "Fixed Income"
+                ],
+                "summary": "GET All FixedIncome",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "page_number",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "optional",
+                        "example": "1"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "optional",
+                        "example": "10"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/fixed_incomes/{user_id}": {
+            "post": {
+                "tags": [
+                    "Fixed Income"
+                ],
+                "summary": "Fixed Income Create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "Rent",
+                                    "purchase_date": "2023-04-05",
+                                    "type": "Rent",
+                                    "purchase_price": 2000,
+                                    "current_value": 3000,
+                                    "notes": "note for Equity...",
+                                    "quantity": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/fixed_incomes/{fixed_income_id}": {
+            "get": {
+                "tags": [
+                    "Fixed Income"
+                ],
+                "summary": "Get Fixed Income by ID",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "fixed_income_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Fixed Income"
+                ],
+                "summary": "Update Fixed Income",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "purchase_price": 100000,
+                                    "current_value": 500000.55,
+                                    "quantity": 1,
+                                    "notes": "Fixed Incomes note..."
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Fixed Income"
+                ],
+                "summary": "Delete Fixed Income by id",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "fixed_income_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/income/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "Income"
+                ],
+                "summary": "GET all Income",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "\"2023-01-01\""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "\"2023-12-31\""
+                    },
+                    {
+                        "name": "page_number",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "10"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/income/{user_id}": {
+            "post": {
+                "tags": [
+                    "Income"
+                ],
+                "summary": "Income Create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "Salary",
+                                    "date": "2023-04-05",
+                                    "type": "Salary",
+                                    "amount": 100000,
+                                    "notes": "income record note.."
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/api/income/{income_id}": {
+            "get": {
+                "tags": [
+                    "Income"
+                ],
+                "summary": "Get Income by ID",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "income_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Income"
+                ],
+                "summary": "Update Income",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "Salary 2",
+                                    "date": "2023-04-05",
+                                    "type": "Salary",
+                                    "amount": 200000,
+                                    "notes": "income record note.."
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Income"
+                ],
+                "summary": "Delete Income by id",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{token}}"
+                    },
+                    {
+                        "name": "income_id",
                         "in": "path",
                         "schema": {
                             "type": "string"

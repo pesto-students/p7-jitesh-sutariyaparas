@@ -57,7 +57,7 @@ const getFixedIncomeById = async (req, res) => {
   console.log("GET FixedIncome BY ID", req.params.id);
   try {
     const fixedIncome = await FixedIncome.findById(req.params.id);
-    res.json(fixedIncome);
+    res.json(fixedIncome || {});
   } catch (err) {
     console.log(err);
     res.status(500).send({ error: String(err) });

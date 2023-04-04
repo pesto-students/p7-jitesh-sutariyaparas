@@ -26,12 +26,11 @@ const AssetSchema = new Schema({
   notes: {
     type: String,
   },
-  user_id: String,
   user_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
     required: true,
-  }
+  },
 });
 
 module.exports = mongoose.model("Asset", AssetSchema);

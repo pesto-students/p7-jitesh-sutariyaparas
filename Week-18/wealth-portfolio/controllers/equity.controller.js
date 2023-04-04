@@ -56,7 +56,7 @@ const getEquityById = async (req, res) => {
   console.log("GET Equity BY ID", req.params.id);
   try {
     const equity = await Equity.findById(req.params.id);
-    res.json(equity);
+    res.json(equity || {});
   } catch (err) {
     console.log(err);
     res.status(500).send({ error: String(err) });

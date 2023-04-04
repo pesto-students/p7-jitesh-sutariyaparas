@@ -55,7 +55,7 @@ const getIncomeById = async (req, res) => {
   console.log("GET Income BY ID", req.params.id);
   try {
     const asset = await Income.findById(req.params.id);
-    res.json(asset);
+    res.json(asset || {});
   } catch (err) {
     console.log(err);
     res.status(500).send({ error: String(err) });
