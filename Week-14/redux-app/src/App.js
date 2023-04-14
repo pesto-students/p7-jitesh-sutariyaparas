@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleLight } from "./Redux/actions";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -11,9 +12,10 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Light is {lightStatus ? "on" : "off"}</h1>
+    <div class="App">
+      <h1>Light is {lightStatus ? "ON" : "OFF"}</h1>
       <button onClick={handleButtonClick}>Toggle light</button>
+      <div class={`room ${lightStatus ? "on" : "off"}`}></div>
     </div>
   );
 }

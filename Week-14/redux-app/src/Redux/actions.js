@@ -1,6 +1,5 @@
 export const toggleLight = () => {
-    return {
-      type: 'TOGGLE_LIGHT',
-    };
+  return {
+    type: "TOGGLE_LIGHT",
   };
-  
+};
