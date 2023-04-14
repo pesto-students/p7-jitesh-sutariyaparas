@@ -1,0 +1,45 @@
+.step-counter {
+  text-align: center;
+}
+
+.step-btn {
+  width: 30%;
+  height: 40%;
+  border-width: 1px;
+  color: #fff;
+  border-color: #599bb3;
+  font-weight: bold;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0px 10px 14px -7px #276873;
+  text-shadow: 0px 1px 0px #3d768a;
+  background: linear-gradient(rgba(32, 46, 194, 1), rgba(32, 46, 194, 1));
+  margin: 10px;
+}
+
+.step-btn:hover {
+  background: linear-gradient(rgba(32, 46, 194, 1), rgba(32, 46, 194, 1));
+}
+
+.reset-btn {
+  width: 30%;
+  height: 40%;
+  font-size: 1 Arial;
+  border-width: 1px;
+  color: rgba(18, 19, 18, 1);
+  border-color: #b2b8ad;
+  font-weight: bold;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-shadow: inset 0px 0px 14px -3px #f2fadc;
+  text-shadow: inset 0px 1px 0px #ced9bf;
+  background: linear-gradient(#dbe6c4, #9ba892);
+}
+
+.reset-btn:hover {
+  background: linear-gradient(#9ba892, #dbe6c4);
+}

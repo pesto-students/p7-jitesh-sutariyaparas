@@ -17,10 +17,17 @@ const StepCounter = () => {
 
   return (
     <div class="step-counter">
-      <div>stepCounter</div>
       <h1>You have walked {stepCounter} steps today!</h1>
-      <button onClick={counterAddStep}>Add Step</button>
-      <button onClick={counterReset}>Reset Step</button>
+      <div>
+        <button class="step-btn" onClick={counterAddStep}>
+          ADD A STEP
+        </button>
+      </div>
+      <div>
+        <button class="reset-btn" onClick={counterReset}>
+          RESET STEPS
+        </button>
+      </div>
     </div>
   );
 };
