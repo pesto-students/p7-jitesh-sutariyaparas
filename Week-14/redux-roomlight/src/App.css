@@ -1,0 +1,17 @@
+.room {
+  width: 95vw;
+  height: 95vh;
+  margin: 2%;
+}
+
+.room.on {
+  background-color: lightyellow;
+}
+
+.room.off {
+  background-color: black;
+}
+
+.App {
+  text-align: center;
+}
