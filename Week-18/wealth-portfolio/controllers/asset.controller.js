@@ -6,8 +6,8 @@ const getAllAssets = async (req, res) => {
     const pageNumber = parseInt(req.query.page_number) || 1;
     const pageSize = parseInt(req.query.page_size) || 10;
     const skip = (pageNumber - 1) * pageSize;
-    let startDate = req.query.start_date;
-    let endDate = req.query.end_date;
+    let {startDate,endDate} = req.query; 
+
     if (startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
@@ -34,7 +34,7 @@ const getAllAssets = async (req, res) => {
         asset: asset,
       });
     } else {
-      const totalRecordsCount = await Asset.countDocuments();
+      const totalRecordsCount = await Asset.countDocuments({user_id: req.params.user_id});
       const totalPages = Math.ceil(totalRecordsCount / pageSize);
       const asset = await Asset.find({ user_id: req.params.user_id })
         .skip(skip)
