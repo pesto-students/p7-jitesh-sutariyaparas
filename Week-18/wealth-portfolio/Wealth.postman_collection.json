@@ -1,0 +1,1326 @@
+{
+	"info": {
+		"_postman_id": "4b9c1176-ad25-4160-b7f6-424edd5f0494",
+		"name": "Wealth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SignUp/Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"firstname\":\"Paras\",\r\n   \"lastname\":\"Sutariya\",\r\n   \"email\":\"parassutariya@gmail.com\",\r\n   \"password\":\"123456\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"parassutariya@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User All user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/users?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/users/{{user_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"users",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User by ID",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\":\"PARAS\",\r\n    \"lastname\":\"SUTARIYA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/users/{{user_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"users",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/users/{{user_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"users",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assets Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"name\": \"Swift\",\r\n     \"type\":\"Vehicle\",\r\n     \"purchase_date\":\"2023-04-05\",\r\n     \"purchase_price\":800000,\r\n     \"current_value\":500000,\r\n     \"quantity\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/assets/{{user_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"assets",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Assets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/assets/user/{{user_id}}?token={{token}}&start_date=\"2023-01-01\"&end_date=\"2023-12-31\"&page_number=1&page_size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"assets",
+						"user",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "start_date",
+							"value": "\"2023-01-01\"",
+							"description": "optional"
+						},
+						{
+							"key": "end_date",
+							"value": "\"2023-12-31\"",
+							"description": "optional"
+						},
+						{
+							"key": "page_number",
+							"value": "1",
+							"description": "optional"
+						},
+						{
+							"key": "page_size",
+							"value": "10",
+							"description": "optional"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/assets/{{asset_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"assets",
+						"{{asset_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Assets",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"purchase_price\":100000.00,\r\n    \"current_value\":500000.55,\r\n    \"quantity\":1,\r\n    \"notes\":\"Assets note...\",\r\n    \"user_id\":\"64217972b84cf42c6e779df9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/assets/{{asset_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"assets",
+						"{{asset_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Asset by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/assets/{{asset_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"assets",
+						"{{asset_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Pizza\",\r\n    \"date\":\"2023-04-05\",\r\n    \"type\":\"Food\",\r\n    \"amount\":2000,\r\n    \"notes\":\"online order for office\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/expense/{{user_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"expense",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Expense",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/expense/user/{{user_id}}?token={{token}}&start_date=\"2023-01-01\"&end_date=\"2023-12-31\"&page_number=1&page_size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"expense",
+						"user",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "start_date",
+							"value": "\"2023-01-01\"",
+							"description": "optional"
+						},
+						{
+							"key": "end_date",
+							"value": "\"2023-12-31\"",
+							"description": "optional"
+						},
+						{
+							"key": "page_number",
+							"value": "1",
+							"description": "optional"
+						},
+						{
+							"key": "page_size",
+							"value": "10",
+							"description": "optional"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Expense by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/expense/{{expense_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"expense",
+						"{{expense_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Expense",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"purchase_price\":100000.00,\r\n    \"current_value\":500000.55,\r\n    \"quantity\":1,\r\n    \"notes\":\"Expenses note...\",\r\n    \"user_id\":\"64217972b84cf42c6e779df9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/expense/{{expense_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"expense",
+						"{{expense_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Expense by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/expense/{{expense_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"expense",
+						"{{expense_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Equity",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/equity/user/{{user_id}}?token={{token}}&page_number=1&page_size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"equity",
+						"user",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "start_date",
+							"value": "\"2023-01-01\"",
+							"description": "optional",
+							"disabled": true
+						},
+						{
+							"key": "end_date",
+							"value": "\"2023-12-31\"",
+							"description": "optional",
+							"disabled": true
+						},
+						{
+							"key": "page_number",
+							"value": "1",
+							"description": "optional"
+						},
+						{
+							"key": "page_size",
+							"value": "10",
+							"description": "optional"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Equity Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Equity\",\r\n    \"purchase_date\":\"2023-04-05\",\r\n    \"type\":\"Equity 1\",\r\n    \"purchase_price\":2000,\r\n    \"current_value\":3000,\r\n    \"notes\":\"note for Equity...\",\r\n    \"quantity\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/equity/{{user_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"equity",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Equity by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/equity/{{equity_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"equity",
+						"{{equity_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Equity",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"purchase_price\":100000.00,\r\n    \"current_value\":500000.55,\r\n    \"quantity\":1,\r\n    \"notes\":\"Equitys note...\",\r\n    \"user_id\":\"64217972b84cf42c6e779df9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/equity/{{equity_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"equity",
+						"{{equity_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Equity by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/equity/{{equity_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"equity",
+						"{{equity_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all savings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/savings/user/{{user_id}}?token={{token}}&start_date=\"2023-01-01\"&end_date=\"2023-12-31\"&page_number=1&page_size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"savings",
+						"user",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "start_date",
+							"value": "\"2023-01-01\"",
+							"description": "optional"
+						},
+						{
+							"key": "end_date",
+							"value": "\"2023-12-31\"",
+							"description": "optional"
+						},
+						{
+							"key": "page_number",
+							"value": "1",
+							"description": "optional"
+						},
+						{
+							"key": "page_size",
+							"value": "10",
+							"description": "optional"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Savings Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"FD\",\r\n    \"date\":\"2023-04-05\",\r\n    \"type\":\"FD\",\r\n    \"amount\":2000,\r\n    \"notes\":\"FD...\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/Savings/{{user_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"Savings",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Savings by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/Savings/{{saving_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"Savings",
+						"{{saving_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Savings",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\":10000.00,\r\n    \"notes\":\"Savingss note...\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/Savings/{{saving_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"Savings",
+						"{{saving_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Savings by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/Savings/{{saving_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"Savings",
+						"{{saving_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All FixedIncome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/fixed_incomes/user/{{user_id}}?token={{token}}&page_number=1&page_size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"fixed_incomes",
+						"user",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "start_date",
+							"value": "\"2023-01-01\"",
+							"description": "optional",
+							"disabled": true
+						},
+						{
+							"key": "end_date",
+							"value": "\"2023-12-31\"",
+							"description": "optional",
+							"disabled": true
+						},
+						{
+							"key": "page_number",
+							"value": "1",
+							"description": "optional"
+						},
+						{
+							"key": "page_size",
+							"value": "10",
+							"description": "optional"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fixed Income Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Rent\",\r\n    \"purchase_date\":\"2023-04-05\",\r\n    \"type\":\"Rent\",\r\n    \"purchase_price\":2000,\r\n    \"current_value\":3000,\r\n    \"notes\":\"note for Equity...\",\r\n    \"quantity\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/fixed_incomes/{{user_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"fixed_incomes",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Fixed Income by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/fixed_incomes/{{fixed_income_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"fixed_incomes",
+						"{{fixed_income_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Fixed Income",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"purchase_price\":100000.00,\r\n    \"current_value\":500000.55,\r\n    \"quantity\":1,\r\n    \"notes\":\"Fixed Incomes note...\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/fixed_incomes/{{fixed_income_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"fixed_incomes",
+						"{{fixed_income_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Fixed Income by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/fixed_incomes/{{fixed_income_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"fixed_incomes",
+						"{{fixed_income_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all Income",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/income/user/{{user_id}}?token={{token}}&start_date=\"2023-01-01\"&end_date=\"2023-12-31\"&page_number=1&page_size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"income",
+						"user",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "start_date",
+							"value": "\"2023-01-01\""
+						},
+						{
+							"key": "end_date",
+							"value": "\"2023-12-31\""
+						},
+						{
+							"key": "page_number",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Income Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Salary\",\r\n    \"date\":\"2023-04-05\",\r\n    \"type\":\"Salary\",\r\n    \"amount\":100000,\r\n    \"notes\":\"income record note..\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/income/{{user_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"income",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Income by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/income/{{income_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"income",
+						"{{income_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Income",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Salary 2\",\r\n    \"date\":\"2023-04-05\",\r\n    \"type\":\"Salary\",\r\n    \"amount\":200000,\r\n    \"notes\":\"income record note..\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3005/v1/api/income/{{income_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"income",
+						"{{income_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Income by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/v1/api/income/{{income_id}}?token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"v1",
+						"api",
+						"income",
+						"{{income_id}}"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhcmFzc3V0YXJpeWFAZ21haWwuY29tIiwiaWF0IjoxNjgwNjAyNDYxfQ._HV9dvfIF3lhzx3parfLnnaBFmHZhOhbtZVNyA9rSTs",
+			"type": "default"
+		},
+		{
+			"key": "user_id",
+			"value": "6427e949389b9a05e73db869",
+			"type": "default"
+		},
+		{
+			"key": "asset_id",
+			"value": "642bfb04910b76fbf666869a",
+			"type": "default"
+		},
+		{
+			"key": "expense_id",
+			"value": "6429466986d9b2c7fc111d64",
+			"type": "default"
+		},
+		{
+			"key": "equity_id",
+			"value": "642c02e8d10304b8e6a4cf76",
+			"type": "default"
+		},
+		{
+			"key": "saving_id",
+			"value": "642c04a62a26b1622fd866b8",
+			"type": "default"
+		},
+		{
+			"key": "income_id",
+			"value": "642c0b35795f75fa4523267d",
+			"type": "default"
+		},
+		{
+			"key": "fixed_income_id",
+			"value": "642c08482a26b1622fd866d0",
+			"type": "default"
+		}
+	]
+}
